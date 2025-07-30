@@ -12,11 +12,11 @@ region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h7y0j"]
 atlas = ExtResource("2_num78")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_006j3"]
 atlas = ExtResource("2_num78")
-region = Rect2(64, 64, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpsvj"]
 atlas = ExtResource("2_num78")
@@ -89,4 +89,15 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Art/Raw/CharacterSheet.aseprite",
 "source_uid": 4258435158593344556
 }
-metadata/_aseprite_wizard_source_file_hash_ = "d7fe723e0ddbb6e87ecce899daf34e9e"
+metadata/_aseprite_wizard_source_file_hash_ = "7e08db482d969bba49e7aedde688d049"
+
+[node name="InventorySprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(9, -10)
+scale = Vector2(0.25, 0.25)
+
+[node name="PlayerInteraction" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(0, -48)
+collision_mask = 4

@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://basqif7ba70dq"
+path="res://.godot/imported/Ammo.aseprite-f42a02f688aa6a629bd2deb157148013.res"
+
+[deps]
+
+source_file="res://Art/Raw/Ammo.aseprite"
+dest_files=["res://.godot/imported/Ammo.aseprite-f42a02f688aa6a629bd2deb157148013.res"]
+
+[params]
+

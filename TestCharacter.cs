@@ -6,16 +6,32 @@ public partial class TestCharacter : CharacterBody2D
 	public float Speed { get; set; } = 200.0f;
 
 	private AnimatedSprite2D _playerAnimatedSprite;
+	private RayCast2D _playerInteraction;
 
 	public override void _Ready()
 	{
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
+		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		HandleMovement();
+		HandleInteraction();
+	}
+
+	private void HandleMovement()
+	{
 		// Get input direction
 		Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		if (inputDirection == Vector2.Zero)
+		{
+			return;
+		}
+
+		// The player is currently a circle with a radius of 32.
+		// 48 is 1.5 times that so the target position is a bit beyond the player.
+		_playerInteraction.TargetPosition = inputDirection * 48;
 
 		// Set velocity based on input and speed
 		Velocity = inputDirection * Speed;
@@ -29,14 +45,24 @@ public partial class TestCharacter : CharacterBody2D
 		}
 		else if (inputDirection.X == 1)
 		{
-			_playerAnimatedSprite.Play("Left");
+			_playerAnimatedSprite.Play("Right");
 		}
 		else if (inputDirection.X == -1)
 		{
-			_playerAnimatedSprite.Play("Right");
+			_playerAnimatedSprite.Play("Left");
 		}
 
 		// Move the character and handle collisions
 		MoveAndSlide();
+	}
+
+	private void HandleInteraction()
+	{
+		if (_playerInteraction.GetCollider() is not Item item)
+		{
+			return;
+		}
+
+		GD.Print(item.Name);
 	}
 }
