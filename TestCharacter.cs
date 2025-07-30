@@ -2,7 +2,7 @@ using Godot;
 
 public partial class TestCharacter : CharacterBody2D
 {
-	[Export] // Allows you to modify the speed in the editor
+	[Export]
 	public float Speed { get; set; } = 200.0f;
 
 	private AnimatedSprite2D _playerAnimatedSprite;
@@ -69,13 +69,12 @@ public partial class TestCharacter : CharacterBody2D
 
 		if (_heldItem is not null)
 		{
-			Item newItem = _heldItem.Duplicate() as Item;
-			newItem!.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
-			_heldItem.QueueFree();
-			_heldItem = null;
+			_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
+			GetParent().AddChild(_heldItem);
+
+			SetHeldItem(null);
 			_heldItemSprite.Texture = null;
 
-			GetParent().AddChild(newItem);
 			return;
 		}
 
@@ -84,9 +83,15 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
-		_heldItem = item.Duplicate() as Item;
-		item.QueueFree();
+		SetHeldItem(item);
+		item.GetParent().RemoveChild(item);
 
-		_heldItemSprite.Texture = _heldItem?.GetNode<Sprite2D>("ItemSprite")?.Texture;
+		_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
+	}
+
+	private void SetHeldItem(Item item)
+	{
+		_heldItem = item;
+		_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
 	}
 }

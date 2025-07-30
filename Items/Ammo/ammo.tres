@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://jj82r8hx3fpa"]
+
+[ext_resource type="Script" uid="uid://l2rv4a4y48g6" path="res://Items/ItemResource.cs" id="1_3toc4"]
+[ext_resource type="Texture2D" uid="uid://qbtsh66033jf" path="res://Items/Ammo/Ammo.png" id="1_5rebt"]
+
+[resource]
+script = ExtResource("1_3toc4")
+Name = "Ammo"
+ItemTexture = ExtResource("1_5rebt")
+metadata/_custom_type_script = "uid://l2rv4a4y48g6"
