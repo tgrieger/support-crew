@@ -1,17 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://c23yb8nmgsmx6"]
+[gd_scene load_steps=9 format=3 uid="uid://c23yb8nmgsmx6"]
 
-[ext_resource type="Texture2D" uid="uid://do3anu3iinowi" path="res://icon.svg" id="1_fksbf"]
 [ext_resource type="Script" uid="uid://b4yb4wjxnt4if" path="res://TestCharacter.cs" id="1_num78"]
+[ext_resource type="Texture2D" uid="uid://bglnvxsrkj24f" path="res://Art/CharacterSheet.png" id="2_num78"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7g2b"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fksbf"]
+radius = 33.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_446ey"]
+atlas = ExtResource("2_num78")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7y0j"]
+atlas = ExtResource("2_num78")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_006j3"]
+atlas = ExtResource("2_num78")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpsvj"]
+atlas = ExtResource("2_num78")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27wch"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_446ey")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7y0j")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_006j3")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpsvj")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 10.0
+}]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_num78")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f7g2b")
+shape = SubResource("CircleShape2D_fksbf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fksbf")
+[node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_27wch")
+animation = &"Up"
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": true,
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://Art",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Art/Raw/CharacterSheet.aseprite",
+"source_uid": 4258435158593344556
+}
+metadata/_aseprite_wizard_source_file_hash_ = "d7fe723e0ddbb6e87ecce899daf34e9e"

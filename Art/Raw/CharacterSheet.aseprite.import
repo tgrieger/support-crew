@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b1w22mpwwse2w"
+path="res://.godot/imported/CharacterSheet.aseprite-396a2edbcd01092d7309e557b4df4c52.res"
+
+[deps]
+
+source_file="res://Art/Raw/CharacterSheet.aseprite"
+dest_files=["res://.godot/imported/CharacterSheet.aseprite-396a2edbcd01092d7309e557b4df4c52.res"]
+
+[params]
+
