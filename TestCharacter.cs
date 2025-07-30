@@ -7,11 +7,15 @@ public partial class TestCharacter : CharacterBody2D
 
 	private AnimatedSprite2D _playerAnimatedSprite;
 	private RayCast2D _playerInteraction;
+	private Sprite2D _heldItemSprite;
+
+	private Item _heldItem;
 
 	public override void _Ready()
 	{
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
 		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
+		_heldItemSprite = GetNode<Sprite2D>("HeldItemSprite");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -58,11 +62,25 @@ public partial class TestCharacter : CharacterBody2D
 
 	private void HandleInteraction()
 	{
+		if (!Input.IsActionJustPressed("interact"))
+		{
+			return;
+		}
+
+		if (_heldItem is not null)
+		{
+			// TODO drop the item
+			return;
+		}
+
 		if (_playerInteraction.GetCollider() is not Item item)
 		{
 			return;
 		}
 
-		GD.Print(item.Name);
+		_heldItem = item.Duplicate() as Item;
+		item.QueueFree();
+
+		_heldItemSprite.Texture = _heldItem?.GetNode<Sprite2D>("ItemSprite")?.Texture;
 	}
 }
