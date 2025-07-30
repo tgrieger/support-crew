@@ -69,7 +69,13 @@ public partial class TestCharacter : CharacterBody2D
 
 		if (_heldItem is not null)
 		{
-			// TODO drop the item
+			Item newItem = _heldItem.Duplicate() as Item;
+			newItem!.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
+			_heldItem.QueueFree();
+			_heldItem = null;
+			_heldItemSprite.Texture = null;
+
+			GetParent().AddChild(newItem);
 			return;
 		}
 
