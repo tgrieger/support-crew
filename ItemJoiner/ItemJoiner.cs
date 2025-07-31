@@ -1,7 +1,7 @@
 using Godot;
 
 [Tool]
-public partial class ItemCrate : StaticBody2D
+public partial class ItemJoiner : StaticBody2D
 {
 	[Export]
 	public PackedScene Item { get; set; }
@@ -20,8 +20,9 @@ public partial class ItemCrate : StaticBody2D
 		}
 	}
 
-	public Item GetItem()
+	public Item JoinItems()
 	{
+		// TODO lookup resource to make
 		Item item = Item.Instantiate<Item>();
 		item.ItemResource = ItemResource;
 		return item;

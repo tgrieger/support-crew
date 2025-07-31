@@ -7,6 +7,13 @@ public partial class Item : StaticBody2D
 	public ItemResource ItemResource
 	{
 		get => GetNode<ItemSprite>("ItemSprite").ItemResource;
-		set => GetNode<ItemSprite>("ItemSprite").ItemResource = value;
+		set
+		{
+			ItemSprite node = GetNode<ItemSprite>("ItemSprite");
+			if (node != null)
+			{
+				node.ItemResource = value;
+			}
+		}
 	}
 }
