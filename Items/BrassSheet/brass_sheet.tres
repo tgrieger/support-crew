@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://cratlbauny3k6"]
+
+[ext_resource type="Texture2D" uid="uid://csp4v0spvct07" path="res://Items/BrassSheet/BrassSheet.png" id="1_qsd6x"]
+[ext_resource type="Script" uid="uid://l2rv4a4y48g6" path="res://Items/ItemResource.cs" id="1_tap3m"]
+
+[resource]
+script = ExtResource("1_tap3m")
+Name = "Brass Sheet"
+ItemTexture = ExtResource("1_qsd6x")
+metadata/_custom_type_script = "uid://l2rv4a4y48g6"

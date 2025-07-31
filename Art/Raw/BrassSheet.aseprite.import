@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bjxabgkpqjtee"
+path="res://.godot/imported/BrassSheet.aseprite-b714121dc39b4c2ca46db20efcb0e698.res"
+
+[deps]
+
+source_file="res://Art/Raw/BrassSheet.aseprite"
+dest_files=["res://.godot/imported/BrassSheet.aseprite-b714121dc39b4c2ca46db20efcb0e698.res"]
+
+[params]
+

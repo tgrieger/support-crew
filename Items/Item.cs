@@ -9,7 +9,7 @@ public partial class Item : StaticBody2D
 		get => GetNode<ItemSprite>("ItemSprite").ItemResource;
 		set
 		{
-			ItemSprite node = GetNode<ItemSprite>("ItemSprite");
+			ItemSprite node = GetNodeOrNull<ItemSprite>("ItemSprite");
 			if (node != null)
 			{
 				node.ItemResource = value;

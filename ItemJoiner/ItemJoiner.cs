@@ -16,7 +16,7 @@ public partial class ItemJoiner : StaticBody2D
 		get => GetNode<ItemSprite>("ItemSprite1").ItemResource;
 		set
 		{
-			ItemSprite node = GetNode<ItemSprite>("ItemSprite1");
+			ItemSprite node = GetNodeOrNull<ItemSprite>("ItemSprite1");
 			if (node != null)
 			{
 				node.ItemResource = value;
@@ -30,7 +30,7 @@ public partial class ItemJoiner : StaticBody2D
 		get => GetNode<ItemSprite>("ItemSprite2").ItemResource;
 		set
 		{
-			ItemSprite node = GetNode<ItemSprite>("ItemSprite2");
+			ItemSprite node = GetNodeOrNull<ItemSprite>("ItemSprite2");
 			if (node != null)
 			{
 				node.ItemResource = value;
@@ -44,7 +44,7 @@ public partial class ItemJoiner : StaticBody2D
 		get => GetNode<ItemSprite>("OutputItemSprite").ItemResource;
 		set
 		{
-			ItemSprite node = GetNode<ItemSprite>("OutputItemSprite");
+			ItemSprite node = GetNodeOrNull<ItemSprite>("OutputItemSprite");
 			if (node != null)
 			{
 				node.ItemResource = value;

@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=9 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://test_character.tscn" id="2_1c2mv"]
-[ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="3_f7g2b"]
 [ext_resource type="Resource" uid="uid://jj82r8hx3fpa" path="res://Items/Ammo/ammo.tres" id="4_4ptq8"]
+[ext_resource type="Resource" uid="uid://cratlbauny3k6" path="res://Items/BrassSheet/brass_sheet.tres" id="4_y646j"]
 [ext_resource type="PackedScene" uid="uid://cdxpfpwupp5pt" path="res://ItemCrate/item_crate.tscn" id="5_sb12i"]
 [ext_resource type="PackedScene" uid="uid://bk3qrmekvub24" path="res://ItemJoiner/item_joiner.tscn" id="6_gbhdq"]
+[ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="8_lnbra"]
 [ext_resource type="Script" uid="uid://dahwuaex3xyo1" path="res://Healthbar/HealthBar.cs" id="9_58smv"]
 
 [node name="Node2D" type="Node2D"]
@@ -16,12 +17,9 @@ tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAA
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_1c2mv")]
 position = Vector2(281, 250)
 
-[node name="Item" parent="." instance=ExtResource("3_f7g2b")]
-position = Vector2(609, 247)
-ItemResource = ExtResource("4_4ptq8")
-
 [node name="ItemCrate" parent="." instance=ExtResource("5_sb12i")]
 position = Vector2(505, 391)
+ItemResource = ExtResource("4_y646j")
 
 [node name="ItemJoiner" parent="." instance=ExtResource("6_gbhdq")]
 position = Vector2(236, 449)
@@ -45,5 +43,9 @@ offset_right = 1118.0
 offset_bottom = 595.0
 show_percentage = false
 script = ExtResource("9_58smv")
+
+[node name="ItemCrate2" parent="." instance=ExtResource("5_sb12i")]
+position = Vector2(504, 467)
+ItemResource = ExtResource("8_lnbra")
 
 [connection signal="timeout" from="HealthControl/HealthTimer" to="HealthControl/HealthBar" method="_on_timer_timeout"]
