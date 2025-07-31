@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=4 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://test_character.tscn" id="2_1c2mv"]
 [ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="3_f7g2b"]
-[ext_resource type="Resource" uid="uid://jj82r8hx3fpa" path="res://Items/Ammo/ammo.tres" id="4_4ptq8"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -15,4 +14,3 @@ position = Vector2(281, 250)
 
 [node name="Item" parent="." instance=ExtResource("3_f7g2b")]
 position = Vector2(609, 247)
-ItemResource = ExtResource("4_4ptq8")

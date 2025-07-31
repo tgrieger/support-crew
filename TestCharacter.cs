@@ -9,7 +9,7 @@ public partial class TestCharacter : CharacterBody2D
 	private RayCast2D _playerInteraction;
 	private Sprite2D _heldItemSprite;
 
-	private Item _heldItem;
+	private SupportCrew.Items.Item _heldItem;
 
 	public override void _Ready()
 	{
@@ -78,7 +78,7 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
-		if (_playerInteraction.GetCollider() is not Item item)
+		if (_playerInteraction.GetCollider() is not SupportCrew.Items.Item item)
 		{
 			return;
 		}
@@ -89,7 +89,7 @@ public partial class TestCharacter : CharacterBody2D
 		_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
 	}
 
-	private void SetHeldItem(Item item)
+	private void SetHeldItem(SupportCrew.Items.Item item)
 	{
 		_heldItem = item;
 		_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
