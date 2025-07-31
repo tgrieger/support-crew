@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk3qrmekvub24"]
+[gd_scene load_steps=6 format=3 uid="uid://bk3qrmekvub24"]
 
 [ext_resource type="Texture2D" uid="uid://bla7iudru7223" path="res://ItemJoiner/ItemJoiner.png" id="1_110qm"]
 [ext_resource type="Script" uid="uid://x4ey3jilrt7n" path="res://ItemJoiner/ItemJoiner.cs" id="1_xmmqm"]
+[ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="2_5qgcf"]
 [ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="2_xmmqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vtg02"]
@@ -10,6 +11,7 @@ size = Vector2(64, 64)
 [node name="ItemJoiner" type="StaticBody2D"]
 collision_layer = 8
 script = ExtResource("1_xmmqm")
+Item = ExtResource("2_5qgcf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vtg02")
@@ -29,3 +31,5 @@ scale = Vector2(0.391, 0.391)
 
 [node name="OutputItemSprite" parent="." instance=ExtResource("2_xmmqm")]
 unique_name_in_owner = true
+position = Vector2(15, 15)
+scale = Vector2(0.391, 0.391)

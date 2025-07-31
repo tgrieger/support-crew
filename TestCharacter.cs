@@ -22,6 +22,7 @@ public partial class TestCharacter : CharacterBody2D
 	{
 		HandleMovement();
 		HandleInteraction();
+		HandleJoining();
 	}
 
 	private void HandleMovement()
@@ -98,6 +99,22 @@ public partial class TestCharacter : CharacterBody2D
 				SetHeldItem(retrievedItem);
 				break;
 		}
+	}
+
+	private void HandleJoining()
+	{
+		if (!Input.IsActionJustPressed("join"))
+		{
+			return;
+		}
+
+		GodotObject collider = _playerInteraction.GetCollider();
+		if (collider is not ItemJoiner itemJoiner)
+		{
+			return;
+		}
+
+		itemJoiner.JoinItems();
 	}
 
 	private void SetHeldItem(Item item)

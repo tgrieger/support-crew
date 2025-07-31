@@ -24,3 +24,4 @@ position = Vector2(505, 391)
 
 [node name="ItemJoiner" parent="." instance=ExtResource("6_gbhdq")]
 position = Vector2(236, 449)
+TempOutputResource = ExtResource("4_4ptq8")
