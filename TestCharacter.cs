@@ -9,7 +9,7 @@ public partial class TestCharacter : CharacterBody2D
 	private RayCast2D _playerInteraction;
 	private Sprite2D _heldItemSprite;
 
-	private SupportCrew.Items.Item _heldItem;
+	private Item _heldItem;
 
 	public override void _Ready()
 	{
@@ -78,18 +78,23 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
-		if (_playerInteraction.GetCollider() is not SupportCrew.Items.Item item)
+		GodotObject collider = _playerInteraction.GetCollider();
+		switch (collider)
 		{
-			return;
+			case Item item:
+				SetHeldItem(item);
+				item.GetParent().RemoveChild(item);
+
+				_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
+				break;
+			case ItemCrate itemCrate:
+				Item newItem = itemCrate.GetItem();
+				SetHeldItem(newItem);
+				break;
 		}
-
-		SetHeldItem(item);
-		item.GetParent().RemoveChild(item);
-
-		_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
 	}
 
-	private void SetHeldItem(SupportCrew.Items.Item item)
+	private void SetHeldItem(Item item)
 	{
 		_heldItem = item;
 		_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;

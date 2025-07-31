@@ -1,7 +1,5 @@
 using Godot;
 
-namespace SupportCrew.Items;
-
 [Tool]
 public partial class Item : StaticBody2D
 {

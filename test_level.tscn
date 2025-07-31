@@ -20,4 +20,3 @@ ItemResource = ExtResource("4_4ptq8")
 
 [node name="ItemCrate" parent="." instance=ExtResource("5_sb12i")]
 position = Vector2(505, 391)
-ItemResource = null
