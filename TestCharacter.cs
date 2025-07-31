@@ -67,10 +67,14 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
+		GodotObject collider = _playerInteraction.GetCollider();
 		if (_heldItem is not null)
 		{
-			_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
-			GetParent().AddChild(_heldItem);
+			if (collider is not ItemJoiner itemJoiner || !itemJoiner.AddItem(_heldItem))
+			{
+				_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
+				GetParent().AddChild(_heldItem);
+			}
 
 			SetHeldItem(null);
 			_heldItemSprite.Texture = null;
@@ -78,13 +82,11 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
-		GodotObject collider = _playerInteraction.GetCollider();
 		switch (collider)
 		{
 			case Item item:
 				SetHeldItem(item);
 				item.GetParent().RemoveChild(item);
-
 				_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
 				break;
 			case ItemCrate itemCrate:

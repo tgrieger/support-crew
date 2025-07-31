@@ -12,10 +12,7 @@ public partial class ItemSprite : Sprite2D
 		set
 		{
 			_itemResource = value;
-			if (Engine.IsEditorHint())
-			{
-				SetItemSprite();
-			}
+			SetItemSprite();
 		}
 	}
 
