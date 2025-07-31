@@ -34,7 +34,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="HealthTimer" type="Timer" parent="HealthControl"]
-wait_time = 0.143
+wait_time = 30.0
 autostart = true
 
 [node name="HealthBar" type="ProgressBar" parent="HealthControl"]
