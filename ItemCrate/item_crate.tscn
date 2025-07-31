@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdxpfpwupp5pt"]
+
+[ext_resource type="Texture2D" uid="uid://ctly7tyqidm6v" path="res://ItemCrate/ItemCrate.png" id="1_refl0"]
+[ext_resource type="Script" uid="uid://bodw2uw4r2o03" path="res://ItemCrate/ItemCrate.cs" id="1_u43ya"]
+[ext_resource type="Resource" uid="uid://jj82r8hx3fpa" path="res://Items/Ammo/ammo.tres" id="2_ok437"]
+[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="3_02304"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u43ya"]
+size = Vector2(64, 64)
+
+[node name="ItemCrate" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_u43ya")
+ItemResource = ExtResource("2_ok437")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u43ya")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_refl0")
+
+[node name="ItemSprite" parent="." instance=ExtResource("3_02304")]
+unique_name_in_owner = true
+scale = Vector2(0.68716, 0.687407)
+ItemResource = ExtResource("2_ok437")

@@ -1,9 +1,7 @@
 using Godot;
 
-namespace SupportCrew.Items;
-
 [Tool]
-public partial class Item : StaticBody2D
+public partial class ItemCrate : StaticBody2D
 {
 	[Export]
 	public ItemResource ItemResource

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56ug557njcyy"]
+
+[ext_resource type="Script" uid="uid://c0gypwhuj1unv" path="res://ItemSprite.cs" id="1_b3kpp"]
+
+[node name="ItemSprite" type="Sprite2D"]
+script = ExtResource("1_b3kpp")
