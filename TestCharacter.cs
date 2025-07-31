@@ -7,7 +7,7 @@ public partial class TestCharacter : CharacterBody2D
 
 	private AnimatedSprite2D _playerAnimatedSprite;
 	private RayCast2D _playerInteraction;
-	private Sprite2D _heldItemSprite;
+	private ItemSprite _heldItemSprite;
 
 	private Item _heldItem;
 
@@ -15,7 +15,7 @@ public partial class TestCharacter : CharacterBody2D
 	{
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
 		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
-		_heldItemSprite = GetNode<Sprite2D>("HeldItemSprite");
+		_heldItemSprite = GetNode<ItemSprite>("HeldItemSprite");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -78,7 +78,7 @@ public partial class TestCharacter : CharacterBody2D
 			}
 
 			SetHeldItem(null);
-			_heldItemSprite.Texture = null;
+			_heldItemSprite.ItemResource = null;
 
 			return;
 		}
@@ -88,7 +88,7 @@ public partial class TestCharacter : CharacterBody2D
 			case Item item:
 				SetHeldItem(item);
 				item.GetParent().RemoveChild(item);
-				_heldItemSprite.Texture = _heldItem?.ItemResource.ItemTexture;
+				_heldItemSprite.ItemResource = _heldItem?.ItemResource;
 				break;
 			case ItemCrate itemCrate:
 				Item newItem = itemCrate.GetItem();

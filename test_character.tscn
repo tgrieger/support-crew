@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c23yb8nmgsmx6"]
+[gd_scene load_steps=10 format=3 uid="uid://c23yb8nmgsmx6"]
 
 [ext_resource type="Script" uid="uid://b4yb4wjxnt4if" path="res://TestCharacter.cs" id="1_num78"]
 [ext_resource type="Texture2D" uid="uid://bglnvxsrkj24f" path="res://Art/CharacterSheet.png" id="2_num78"]
+[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="3_446ey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fksbf"]
 radius = 33.0
@@ -91,13 +92,12 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "7e08db482d969bba49e7aedde688d049"
 
-[node name="HeldItemSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-texture_filter = 1
-position = Vector2(9, -10)
-scale = Vector2(0.25, 0.25)
-
 [node name="PlayerInteraction" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 target_position = Vector2(0, -48)
 collision_mask = 12
+
+[node name="HeldItemSprite" parent="." instance=ExtResource("3_446ey")]
+unique_name_in_owner = true
+position = Vector2(10, -9)
+scale = Vector2(0.238707, 0.238707)
