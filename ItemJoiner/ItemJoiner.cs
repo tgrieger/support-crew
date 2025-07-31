@@ -58,7 +58,21 @@ public partial class ItemJoiner : StaticBody2D
 
 	public Item RetrieveItem()
 	{
-		return null;
+		Item returnItem = null;
+		if (_itemSlot2 is not null)
+		{
+			returnItem = _itemSlot2;
+			_itemSlot2 = null;
+			ItemResource2 = null;
+		}
+		else if (_itemSlot1 is not null)
+		{
+			returnItem = _itemSlot1;
+			_itemSlot1 = null;
+			ItemResource1 = null;
+		}
+
+		return returnItem;
 	}
 
 	public Item JoinItems()

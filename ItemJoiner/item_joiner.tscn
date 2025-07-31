@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bk3qrmekvub24"]
 
-[ext_resource type="Texture2D" uid="uid://c2t77yb3nu5i5" path="res://ItemJoiner/ItemJoiner.png" id="1_110qm"]
+[ext_resource type="Texture2D" uid="uid://bla7iudru7223" path="res://ItemJoiner/ItemJoiner.png" id="1_110qm"]
 [ext_resource type="Script" uid="uid://x4ey3jilrt7n" path="res://ItemJoiner/ItemJoiner.cs" id="1_xmmqm"]
 [ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="2_xmmqm"]
 
@@ -24,5 +24,8 @@ scale = Vector2(0.391, 0.391)
 
 [node name="ItemSprite2" parent="." instance=ExtResource("2_xmmqm")]
 unique_name_in_owner = true
-position = Vector2(14, 14)
+position = Vector2(15, -14)
 scale = Vector2(0.391, 0.391)
+
+[node name="OutputItemSprite" parent="." instance=ExtResource("2_xmmqm")]
+unique_name_in_owner = true

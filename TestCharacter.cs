@@ -93,6 +93,10 @@ public partial class TestCharacter : CharacterBody2D
 				Item newItem = itemCrate.GetItem();
 				SetHeldItem(newItem);
 				break;
+			case ItemJoiner itemJoiner:
+				Item retrievedItem = itemJoiner.RetrieveItem();
+				SetHeldItem(retrievedItem);
+				break;
 		}
 	}
 
