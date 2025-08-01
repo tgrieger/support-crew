@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://dd4sbgtic0df7"]
+
+[ext_resource type="Resource" uid="uid://cratlbauny3k6" path="res://Items/BrassSheet/brass_sheet.tres" id="1_aq558"]
+[ext_resource type="Script" uid="uid://u0x7o5a7ylva" path="res://Recipes/RecipeResource.cs" id="1_o2moa"]
+[ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="2_gieok"]
+[ext_resource type="Resource" uid="uid://jj82r8hx3fpa" path="res://Items/Ammo/ammo.tres" id="3_c8jf5"]
+
+[resource]
+script = ExtResource("1_o2moa")
+InputResources = Array[Object]([ExtResource("1_aq558"), ExtResource("2_gieok")])
+OutputResource = ExtResource("3_c8jf5")
+metadata/_custom_type_script = "uid://u0x7o5a7ylva"

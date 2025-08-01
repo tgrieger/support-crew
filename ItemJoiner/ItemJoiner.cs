@@ -52,10 +52,6 @@ public partial class ItemJoiner : StaticBody2D
 		}
 	}
 
-	// TODO remove once recipes exist
-	[Export]
-	public ItemResource TempOutputResource { get; set; }
-
 	public bool AddItem(Item item)
 	{
 		if (_itemSlot1 is null)
@@ -102,8 +98,13 @@ public partial class ItemJoiner : StaticBody2D
 
 	public void JoinItems()
 	{
-		// TODO lookup recipe
 		if (_itemSlot1 is null || _itemSlot2 is null)
+		{
+			return;
+		}
+
+		ItemResource recipeOutput = RecipeManager.GetRecipeOutput(ItemResource1, ItemResource2);
+		if (recipeOutput is null)
 		{
 			return;
 		}
@@ -114,7 +115,7 @@ public partial class ItemJoiner : StaticBody2D
 		ItemResource2 = null;
 
 		_outputItemSlot = Item.Instantiate<Item>();
-		_outputItemSlot.ItemResource = TempOutputResource;
+		_outputItemSlot.ItemResource = recipeOutput;
 		OutputItemResource = _outputItemSlot.ItemResource;
 	}
 }

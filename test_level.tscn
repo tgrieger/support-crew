@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=8 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://test_character.tscn" id="2_1c2mv"]
-[ext_resource type="Resource" uid="uid://jj82r8hx3fpa" path="res://Items/Ammo/ammo.tres" id="4_4ptq8"]
 [ext_resource type="Resource" uid="uid://cratlbauny3k6" path="res://Items/BrassSheet/brass_sheet.tres" id="4_y646j"]
 [ext_resource type="PackedScene" uid="uid://cdxpfpwupp5pt" path="res://ItemCrate/item_crate.tscn" id="5_sb12i"]
 [ext_resource type="PackedScene" uid="uid://bk3qrmekvub24" path="res://ItemJoiner/item_joiner.tscn" id="6_gbhdq"]
@@ -23,7 +22,6 @@ ItemResource = ExtResource("4_y646j")
 
 [node name="ItemJoiner" parent="." instance=ExtResource("6_gbhdq")]
 position = Vector2(236, 449)
-TempOutputResource = ExtResource("4_4ptq8")
 
 [node name="HealthControl" type="Control" parent="."]
 layout_mode = 3
