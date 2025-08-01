@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=13 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://test_character.tscn" id="2_1c2mv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b25n3iaa2fij3" path="res://Equipment/Launcher/launcher.tscn" id="8_6emce"]
 [ext_resource type="Texture2D" uid="uid://qbtsh66033jf" path="res://Items/Ammo/Ammo.png" id="8_58smv"]
 [ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="8_lnbra"]
+[ext_resource type="Texture2D" uid="uid://kx1m1wl7r631" path="res://progress-bar-circle.png" id="10_a25ih"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -43,18 +44,31 @@ autostart = true
 [node name="HealthBar" type="ProgressBar" parent="HealthControl"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 46.0
-offset_top = 520.0
-offset_right = 1118.0
-offset_bottom = 595.0
+offset_left = 13.0
+offset_top = 649.0
+offset_right = 571.0
+offset_bottom = 719.0
 value = 100.0
 
 [node name="ObjectiveItemSprite" parent="HealthControl" instance=ExtResource("7_6emce")]
 unique_name_in_owner = true
-position = Vector2(1079, 71)
-scale = Vector2(2, 2)
+position = Vector2(629, 684)
+scale = Vector2(1.10938, 1.09375)
 texture = ExtResource("8_58smv")
 ItemResource = ExtResource("4_4ptq8")
+
+[node name="DeliveryTimerBar" type="TextureProgressBar" parent="HealthControl"]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 648.0
+offset_right = 668.0
+offset_bottom = 720.0
+max_value = 5.0
+value = 2.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_progress = ExtResource("10_a25ih")
+tint_progress = Color(0.593134, 0.593134, 0.593134, 0.756863)
 
 [node name="ItemCrate2" parent="." instance=ExtResource("5_sb12i")]
 position = Vector2(504, 467)
