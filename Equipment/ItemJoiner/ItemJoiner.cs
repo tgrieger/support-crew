@@ -97,17 +97,17 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 		return returnItem;
 	}
 
-	public void Activate()
+	public ItemResource Activate()
 	{
 		if (_itemSlot1 is null || _itemSlot2 is null)
 		{
-			return;
+			return null;
 		}
 
 		ItemResource recipeOutput = RecipeManager.GetRecipeOutput(ItemResource1, ItemResource2);
 		if (recipeOutput is null)
 		{
-			return;
+			return null;
 		}
 
 		_itemSlot1 = null;
@@ -118,5 +118,7 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 		_outputItemSlot = Item.Instantiate<Item>();
 		_outputItemSlot.ItemResource = recipeOutput;
 		OutputItemResource = _outputItemSlot.ItemResource;
+
+		return OutputItemResource;
 	}
 }

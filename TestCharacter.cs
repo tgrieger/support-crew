@@ -9,6 +9,7 @@ public partial class TestCharacter : CharacterBody2D
 	private AnimatedSprite2D _playerAnimatedSprite;
 	private RayCast2D _playerInteraction;
 	private ItemSprite _heldItemSprite;
+	private ItemSprite _objectiveItemSprite;
 
 	private Item _heldItem;
 
@@ -17,6 +18,9 @@ public partial class TestCharacter : CharacterBody2D
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
 		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
 		_heldItemSprite = GetNode<ItemSprite>("HeldItemSprite");
+
+		// TODO don't do this, it's bad practice
+		_objectiveItemSprite = GetNode<ItemSprite>("/root/Node2D/HealthControl/ObjectiveItemSprite");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -111,7 +115,11 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
-		activatable.Activate();
+		ItemResource activatedItemResource = activatable.Activate();
+		if (activatable is Launcher && _objectiveItemSprite.ItemResource == activatedItemResource)
+		{
+			_objectiveItemSprite.ItemResource = null;
+		}
 	}
 
 	private void SetHeldItem(Item item)
