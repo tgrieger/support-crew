@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=9 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://test_character.tscn" id="2_1c2mv"]
 [ext_resource type="Resource" uid="uid://cratlbauny3k6" path="res://Items/BrassSheet/brass_sheet.tres" id="4_y646j"]
 [ext_resource type="PackedScene" uid="uid://cdxpfpwupp5pt" path="res://ItemCrate/item_crate.tscn" id="5_sb12i"]
 [ext_resource type="PackedScene" uid="uid://bk3qrmekvub24" path="res://ItemJoiner/item_joiner.tscn" id="6_gbhdq"]
+[ext_resource type="PackedScene" uid="uid://b25n3iaa2fij3" path="res://Launcher/launcher.tscn" id="8_6emce"]
 [ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="8_lnbra"]
 [ext_resource type="Script" uid="uid://dahwuaex3xyo1" path="res://Healthbar/HealthBar.cs" id="9_58smv"]
 
@@ -45,5 +46,8 @@ script = ExtResource("9_58smv")
 [node name="ItemCrate2" parent="." instance=ExtResource("5_sb12i")]
 position = Vector2(504, 467)
 ItemResource = ExtResource("8_lnbra")
+
+[node name="Launcher" parent="." instance=ExtResource("8_6emce")]
+position = Vector2(237, 348)
 
 [connection signal="timeout" from="HealthControl/HealthTimer" to="HealthControl/HealthBar" method="_on_timer_timeout"]

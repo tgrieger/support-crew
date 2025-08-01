@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b25n3iaa2fij3"]
+
+[ext_resource type="Texture2D" uid="uid://qqmhs3loi7pw" path="res://Launcher/Launcher.png" id="1_vinsq"]
+[ext_resource type="Script" uid="uid://cgac8udgusyfe" path="res://Launcher/Launcher.cs" id="1_wxufk"]
+[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="3_5ch7u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut68q"]
+size = Vector2(64, 64)
+
+[node name="Launcher" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource("1_wxufk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ut68q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vinsq")
+
+[node name="ItemSprite" parent="." instance=ExtResource("3_5ch7u")]
+scale = Vector2(0.687, 0.687)

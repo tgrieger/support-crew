@@ -22,7 +22,7 @@ public partial class TestCharacter : CharacterBody2D
 	{
 		HandleMovement();
 		HandleInteraction();
-		HandleJoining();
+		HandleActivation();
 	}
 
 	private void HandleMovement()
@@ -71,10 +71,15 @@ public partial class TestCharacter : CharacterBody2D
 		GodotObject collider = _playerInteraction.GetCollider();
 		if (_heldItem is not null)
 		{
-			if (collider is not ItemJoiner itemJoiner || !itemJoiner.AddItem(_heldItem))
+			switch (collider)
 			{
-				_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
-				GetParent().AddChild(_heldItem);
+				case ItemJoiner itemJoiner when itemJoiner.AddItem(_heldItem):
+				case Launcher launcher when launcher.AddItem(_heldItem):
+					break;
+				default:
+					_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
+					GetParent().AddChild(_heldItem);
+					break;
 			}
 
 			SetHeldItem(null);
@@ -95,26 +100,33 @@ public partial class TestCharacter : CharacterBody2D
 				SetHeldItem(newItem);
 				break;
 			case ItemJoiner itemJoiner:
-				Item retrievedItem = itemJoiner.RetrieveItem();
-				SetHeldItem(retrievedItem);
+				Item joinerItem = itemJoiner.RetrieveItem();
+				SetHeldItem(joinerItem);
+				break;
+			case Launcher launcher:
+				Item launcherItem = launcher.RetrieveItem();
+				SetHeldItem(launcherItem);
 				break;
 		}
 	}
 
-	private void HandleJoining()
+	private void HandleActivation()
 	{
-		if (!Input.IsActionJustPressed("join"))
+		if (!Input.IsActionJustPressed("activate"))
 		{
 			return;
 		}
 
 		GodotObject collider = _playerInteraction.GetCollider();
-		if (collider is not ItemJoiner itemJoiner)
+		switch (collider)
 		{
-			return;
+			case ItemJoiner itemJoiner:
+				itemJoiner.JoinItems();
+				break;
+			case Launcher launcher:
+				launcher.LaunchItem();
+				break;
 		}
-
-		itemJoiner.JoinItems();
 	}
 
 	private void SetHeldItem(Item item)
