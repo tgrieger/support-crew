@@ -115,11 +115,18 @@ public partial class TestCharacter : CharacterBody2D
 			return;
 		}
 
-		ItemResource activatedItemResource = activatable.Activate();
-		if (activatable is Launcher && _objectiveItemSprite.ItemResource == activatedItemResource)
+		if (activatable is Launcher launcher)
 		{
+			if (launcher.ItemResource != _objectiveItemSprite.ItemResource)
+			{
+				// Don't allow launching things that aren't the objective
+				return;
+			}
+
 			_objectiveItemSprite.ItemResource = null;
 		}
+
+		activatable.Activate();
 	}
 
 	private void SetHeldItem(Item item)
