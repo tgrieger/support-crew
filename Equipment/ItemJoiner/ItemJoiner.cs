@@ -1,7 +1,8 @@
 using Godot;
+using SupportCrew.Equipment;
 
 [Tool]
-public partial class ItemJoiner : StaticBody2D
+public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivatable
 {
 	private Item _itemSlot1;
 	private Item _itemSlot2;
@@ -96,7 +97,7 @@ public partial class ItemJoiner : StaticBody2D
 		return returnItem;
 	}
 
-	public void JoinItems()
+	public void Activate()
 	{
 		if (_itemSlot1 is null || _itemSlot2 is null)
 		{

@@ -1,4 +1,5 @@
 using Godot;
+using SupportCrew.Equipment;
 
 public partial class TestCharacter : CharacterBody2D
 {
@@ -71,15 +72,10 @@ public partial class TestCharacter : CharacterBody2D
 		GodotObject collider = _playerInteraction.GetCollider();
 		if (_heldItem is not null)
 		{
-			switch (collider)
+			if (collider is not IAddable addable || !addable.AddItem(_heldItem))
 			{
-				case ItemJoiner itemJoiner when itemJoiner.AddItem(_heldItem):
-				case Launcher launcher when launcher.AddItem(_heldItem):
-					break;
-				default:
-					_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
-					GetParent().AddChild(_heldItem);
-					break;
+				_heldItem.GlobalPosition = GlobalPosition + _playerInteraction.TargetPosition;
+				GetParent().AddChild(_heldItem);
 			}
 
 			SetHeldItem(null);
@@ -95,17 +91,9 @@ public partial class TestCharacter : CharacterBody2D
 				item.GetParent().RemoveChild(item);
 				_heldItemSprite.ItemResource = _heldItem?.ItemResource;
 				break;
-			case ItemCrate itemCrate:
-				Item newItem = itemCrate.GetItem();
+			case IRetrievable retrievable:
+				Item newItem = retrievable.RetrieveItem();
 				SetHeldItem(newItem);
-				break;
-			case ItemJoiner itemJoiner:
-				Item joinerItem = itemJoiner.RetrieveItem();
-				SetHeldItem(joinerItem);
-				break;
-			case Launcher launcher:
-				Item launcherItem = launcher.RetrieveItem();
-				SetHeldItem(launcherItem);
 				break;
 		}
 	}
@@ -118,15 +106,12 @@ public partial class TestCharacter : CharacterBody2D
 		}
 
 		GodotObject collider = _playerInteraction.GetCollider();
-		switch (collider)
+		if (collider is not IActivatable activatable)
 		{
-			case ItemJoiner itemJoiner:
-				itemJoiner.JoinItems();
-				break;
-			case Launcher launcher:
-				launcher.LaunchItem();
-				break;
+			return;
 		}
+
+		activatable.Activate();
 	}
 
 	private void SetHeldItem(Item item)

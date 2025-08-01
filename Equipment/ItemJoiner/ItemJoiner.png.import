@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctly7tyqidm6v"
-path="res://.godot/imported/ItemCrate.png-934fb850b4a959d8d907c77c2f9008b6.ctex"
+uid="uid://bla7iudru7223"
+path="res://.godot/imported/ItemJoiner.png-6e3fed03d623d711eecd49fb6959c2e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ItemCrate/ItemCrate.png"
-dest_files=["res://.godot/imported/ItemCrate.png-934fb850b4a959d8d907c77c2f9008b6.ctex"]
+source_file="res://Equipment/ItemJoiner/ItemJoiner.png"
+dest_files=["res://.godot/imported/ItemJoiner.png-6e3fed03d623d711eecd49fb6959c2e0.ctex"]
 
 [params]
 

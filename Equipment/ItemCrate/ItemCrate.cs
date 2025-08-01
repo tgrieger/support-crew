@@ -1,7 +1,8 @@
 using Godot;
+using SupportCrew.Equipment;
 
 [Tool]
-public partial class ItemCrate : StaticBody2D
+public partial class ItemCrate : StaticBody2D, IRetrievable
 {
 	[Export]
 	public PackedScene Item { get; set; }
@@ -20,7 +21,7 @@ public partial class ItemCrate : StaticBody2D
 		}
 	}
 
-	public Item GetItem()
+	public Item RetrieveItem()
 	{
 		Item item = Item.Instantiate<Item>();
 		item.ItemResource = ItemResource;

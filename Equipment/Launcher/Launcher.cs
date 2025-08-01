@@ -1,7 +1,8 @@
 using Godot;
+using SupportCrew.Equipment;
 
 [Tool]
-public partial class Launcher : StaticBody2D
+public partial class Launcher : StaticBody2D, IAddable, IRetrievable, IActivatable
 {
 	private Item _itemSlot;
 
@@ -45,19 +46,15 @@ public partial class Launcher : StaticBody2D
 		return returnItem;
 	}
 
-	public ItemResource LaunchItem()
+	public void Activate()
 	{
 		if (_itemSlot is null)
 		{
-			return null;
+			return;
 		}
 
 		_itemSlot.QueueFree();
 		_itemSlot = null;
-
-		ItemResource returnItemResource = ItemResource;
 		ItemResource = null;
-
-		return returnItemResource;
 	}
 }
