@@ -4,8 +4,6 @@ using SupportCrew.Equipment;
 [Tool]
 public partial class Charger : StaticBody2D, IAddable, IRetrievable
 {
-	private double _durabilityPercentage;
-	private Durability _durability;
 	private Item _itemSlot;
 
 	[Export] public double ChargingRate { get; set; } = 50;
@@ -22,32 +20,6 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 				node.ItemResource = value;
 			}
 		}
-	}
-
-	[Export]
-	public double DurabilityPercentage
-	{
-		get => _durabilityPercentage;
-		set
-		{
-			_durabilityPercentage = value;
-			if (_durability is not null)
-			{
-				_durability.DurabilityPercentage = value;
-			}
-
-			if (_itemSlot is not null)
-			{
-				_itemSlot.DurabilityPercentage = value;
-			}
-		}
-	}
-
-	public override void _Ready()
-	{
-		_durability = GetNode<Durability>("Durability");
-		_durability.Visible = ItemResource?.HasDurability ?? false;
-		_durability.DurabilityPercentage = _durabilityPercentage;
 	}
 
 	public override void _Process(double delta)
@@ -69,8 +41,9 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 
 		_itemSlot = item;
 		ItemResource = _itemSlot.ItemResource;
-		_durability.Visible = true;
-		DurabilityPercentage = _itemSlot.DurabilityPercentage;
+
+		item.RemoveChild(item.Durability);
+		AddChild(item.Durability);
 
 		return true;
 	}
@@ -80,7 +53,9 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 		Item returnItem = _itemSlot;
 		_itemSlot = null;
 		ItemResource = null;
-		_durability.Visible = false;
+
+		RemoveChild(returnItem.Durability);
+		returnItem.AddChild(returnItem.Durability);
 
 		return returnItem;
 	}
@@ -92,18 +67,18 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 			return;
 		}
 
-		if (DurabilityPercentage >= 100)
+		if (_itemSlot.DurabilityPercentage >= 100)
 		{
 			return;
 		}
 
 		double amountToCharge = ChargingRate * delta;
-		if (DurabilityPercentage + amountToCharge >= 100)
+		if (_itemSlot.DurabilityPercentage + amountToCharge >= 100)
 		{
-			DurabilityPercentage = 100;
+			_itemSlot.DurabilityPercentage = 100;
 			return;
 		}
 
-		DurabilityPercentage += amountToCharge;
+		_itemSlot.DurabilityPercentage += amountToCharge;
 	}
 }

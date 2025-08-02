@@ -4,7 +4,8 @@ using Godot;
 public partial class Item : StaticBody2D
 {
 	private double _durabilityPercentage;
-	private Durability _durability;
+
+	public Durability Durability { get; private set; }
 
 	[Export]
 	public double DurabilityPercentage
@@ -13,12 +14,12 @@ public partial class Item : StaticBody2D
 		set
 		{
 			_durabilityPercentage = value;
-			if (_durability is null)
+			if (Durability is null)
 			{
 				return;
 			}
 
-			_durability.DurabilityPercentage = value;
+			Durability.DurabilityPercentage = value;
 		}
 	}
 
@@ -38,8 +39,8 @@ public partial class Item : StaticBody2D
 
 	public override void _Ready()
 	{
-		_durability = GetNode<Durability>("Durability");
-		_durability.Visible = ItemResource?.HasDurability ?? false;
-		_durability.DurabilityPercentage = _durabilityPercentage;
+		Durability = GetNode<Durability>("Durability");
+		Durability.Visible = ItemResource?.HasDurability ?? false;
+		Durability.DurabilityPercentage = _durabilityPercentage;
 	}
 }
