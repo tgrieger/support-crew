@@ -7,4 +7,5 @@
 script = ExtResource("1_em4km")
 Name = "Battery"
 ItemTexture = ExtResource("1_amrl0")
+HasDurability = true
 metadata/_custom_type_script = "uid://l2rv4a4y48g6"

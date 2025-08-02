@@ -84,6 +84,6 @@ position = Vector2(237, 348)
 position = Vector2(510, 292)
 collision_layer = 8
 
-[node name="Item" parent="." instance=ExtResource("14_2hfll")]
-position = Vector2(512, 186)
+[node name="Battery" parent="." instance=ExtResource("14_2hfll")]
+position = Vector2(526.48, 211.314)
 ItemResource = ExtResource("15_7fqlb")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://skrxv1vowsns"]
+
+[ext_resource type="Script" uid="uid://v8haob882g6v" path="res://Durability.cs" id="1_h3hhn"]
+
+[node name="Durability" type="ProgressBar"]
+offset_right = 4.0
+offset_bottom = 27.0
+show_percentage = false
+script = ExtResource("1_h3hhn")

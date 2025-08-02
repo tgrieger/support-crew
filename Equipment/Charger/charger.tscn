@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnsbrnqjnsv2"]
+[gd_scene load_steps=6 format=3 uid="uid://dnsbrnqjnsv2"]
 
 [ext_resource type="Texture2D" uid="uid://cev7oxc7cwcey" path="res://Equipment/Charger/Charger.png" id="1_1u2bg"]
 [ext_resource type="Script" uid="uid://clmtvulk5recm" path="res://Equipment/Charger/Charger.cs" id="1_gfcec"]
 [ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="3_nvvmq"]
+[ext_resource type="PackedScene" uid="uid://skrxv1vowsns" path="res://durability.tscn" id="4_loajv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfcec"]
 size = Vector2(64, 64)
 
 [node name="Charger" type="StaticBody2D"]
 script = ExtResource("1_gfcec")
+DurabilityPercentage = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gfcec")
@@ -18,3 +20,10 @@ texture = ExtResource("1_1u2bg")
 
 [node name="ItemSprite" parent="." instance=ExtResource("3_nvvmq")]
 unique_name_in_owner = true
+
+[node name="Durability" parent="." instance=ExtResource("4_loajv")]
+unique_name_in_owner = true
+offset_left = -31.0
+offset_top = 25.0
+offset_right = 31.0
+offset_bottom = 31.0
