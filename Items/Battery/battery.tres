@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://qf7esf13tny5"]
+
+[ext_resource type="Texture2D" uid="uid://cdqs8j8bmm1ly" path="res://Items/Battery/Battery.png" id="1_amrl0"]
+[ext_resource type="Script" uid="uid://l2rv4a4y48g6" path="res://Items/ItemResource.cs" id="1_em4km"]
+
+[resource]
+script = ExtResource("1_em4km")
+Name = "Battery"
+ItemTexture = ExtResource("1_amrl0")
+metadata/_custom_type_script = "uid://l2rv4a4y48g6"

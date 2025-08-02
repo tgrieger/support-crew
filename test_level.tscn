@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=16 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://test_character.tscn" id="2_1c2mv"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://qbtsh66033jf" path="res://Items/Ammo/Ammo.png" id="8_58smv"]
 [ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="8_lnbra"]
 [ext_resource type="Texture2D" uid="uid://kx1m1wl7r631" path="res://progress-bar-circle.png" id="10_a25ih"]
+[ext_resource type="PackedScene" uid="uid://dnsbrnqjnsv2" path="res://Equipment/Charger/charger.tscn" id="13_4bgwg"]
+[ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="14_2hfll"]
+[ext_resource type="Resource" uid="uid://qf7esf13tny5" path="res://Items/Battery/battery.tres" id="15_7fqlb"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -76,3 +79,11 @@ ItemResource = ExtResource("8_lnbra")
 
 [node name="Launcher" parent="." instance=ExtResource("8_6emce")]
 position = Vector2(237, 348)
+
+[node name="Charger" parent="." instance=ExtResource("13_4bgwg")]
+position = Vector2(510, 292)
+collision_layer = 8
+
+[node name="Item" parent="." instance=ExtResource("14_2hfll")]
+position = Vector2(512, 186)
+ItemResource = ExtResource("15_7fqlb")
