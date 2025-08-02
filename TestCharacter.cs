@@ -10,24 +10,32 @@ public partial class TestCharacter : CharacterBody2D
 	private RayCast2D _playerInteraction;
 	private ItemSprite _heldItemSprite;
 	private ItemSprite _objectiveItemSprite;
-
+	private ProgressBar _healthBar;
 	private Item _heldItem;
+	private bool _canMove;
 
 	public override void _Ready()
 	{
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
 		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
 		_heldItemSprite = GetNode<ItemSprite>("HeldItemSprite");
-
+		_healthBar = GetNode<ProgressBar>("/root/Node2D/HealthControl/HealthBar");
 		// TODO don't do this, it's bad practice
 		_objectiveItemSprite = GetNode<ItemSprite>("/root/Node2D/HealthControl/ObjectiveItemSprite");
+		_canMove = true;
+		_healthBar.ValueChanged += HealthLost;
+		
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		HandleMovement();
-		HandleInteraction();
-		HandleActivation();
+		if(_canMove == true)
+		{
+			HandleMovement();
+			HandleInteraction();
+			HandleActivation();
+		}
+		
 	}
 
 	private void HandleMovement()
@@ -127,6 +135,15 @@ public partial class TestCharacter : CharacterBody2D
 		}
 
 		activatable.Activate();
+	}
+	
+	public void HealthLost(double newValue)
+	{
+		if (newValue < 5)
+		{
+			_canMove = false;
+		}
+		
 	}
 
 	private void SetHeldItem(Item item)
