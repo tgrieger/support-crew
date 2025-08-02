@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dagetua6mkjft"
+path="res://.godot/imported/LaserBeam.aseprite-9b929130dfc47850eb19bbc2480a6fcc.res"
+
+[deps]
+
+source_file="res://Art/Raw/LaserBeam.aseprite"
+dest_files=["res://.godot/imported/LaserBeam.aseprite-9b929130dfc47850eb19bbc2480a6fcc.res"]
+
+[params]
+

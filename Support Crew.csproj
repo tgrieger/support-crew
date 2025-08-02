@@ -4,4 +4,7 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>SupportCrew</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Equipment\Laser\" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1wuwukkvw632"]
+
+[ext_resource type="Script" uid="uid://cffbsirs4l85j" path="res://Equipment/Laser/Laser.cs" id="1_2y3vl"]
+[ext_resource type="PackedScene" uid="uid://0ge5hkphnvyx" path="res://Equipment/Laser/laser_battery_attachment.tscn" id="2_2y3vl"]
+[ext_resource type="PackedScene" uid="uid://bg1q6rlmyl7ae" path="res://Equipment/Laser/laser_button.tscn" id="3_2y3vl"]
+
+[node name="Laser" type="Node2D"]
+script = ExtResource("1_2y3vl")
+
+[node name="LaserBatteryAttachment" parent="." instance=ExtResource("2_2y3vl")]
+position = Vector2(-32, 0)
+
+[node name="LaserButton" parent="." instance=ExtResource("3_2y3vl")]
+position = Vector2(32, 0)
