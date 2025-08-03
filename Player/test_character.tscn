@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://c23yb8nmgsmx6"]
 
-[ext_resource type="Script" uid="uid://b4yb4wjxnt4if" path="res://TestCharacter.cs" id="1_num78"]
+[ext_resource type="Script" uid="uid://b4yb4wjxnt4if" path="res://Player/TestCharacter.cs" id="1_num78"]
 [ext_resource type="Texture2D" uid="uid://bglnvxsrkj24f" path="res://Art/CharacterSheet.png" id="2_num78"]
-[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="3_446ey"]
+[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://Items/item_sprite.tscn" id="3_446ey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fksbf"]
 radius = 33.0

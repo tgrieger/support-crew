@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://udnqwsrf2rpj" path="res://Equipment/Laser/LaserBatteryAttachment.png" id="1_pnw8b"]
 [ext_resource type="Script" uid="uid://doyhnanjarnk7" path="res://Equipment/Laser/LaserBatteryAttachment.cs" id="1_q4n2n"]
-[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://item_sprite.tscn" id="3_3vij0"]
+[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://Items/item_sprite.tscn" id="3_3vij0"]
 [ext_resource type="PackedScene" uid="uid://skrxv1vowsns" path="res://durability.tscn" id="4_104oj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmvu2"]

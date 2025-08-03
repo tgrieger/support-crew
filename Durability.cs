@@ -1,5 +1,6 @@
 using Godot;
 
+[Tool]
 public partial class Durability : ProgressBar
 {
 	private readonly StyleBoxFlat _styleBoxFlat = new();

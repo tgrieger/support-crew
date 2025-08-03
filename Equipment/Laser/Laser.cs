@@ -22,7 +22,7 @@ public partial class Laser : Node2D
 
 	private void OnLaserPushed()
 	{
-		if (_laserBatteryAttachment.ItemResource is null || _laserBatteryAttachment.DurabilityPercentage < LaserCost || _objectiveItemSprite.ItemResource.Name != "Laser Beam")
+		if (_laserBatteryAttachment.ItemResource is null || _laserBatteryAttachment.DurabilityPercentage < LaserCost || _objectiveItemSprite.ItemResource?.Name != "Laser Beam")
 		{
 			// Don't fire the laser if it's not the objective
 			return;
