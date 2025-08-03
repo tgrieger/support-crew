@@ -52,6 +52,7 @@ offset_bottom = 40.0
 script = ExtResource("6_6emce")
 
 [node name="ScoreLabel" type="Label" parent="HealthControl"]
+layout_mode = 0
 offset_left = 938.0
 offset_top = 652.0
 offset_right = 1124.0
