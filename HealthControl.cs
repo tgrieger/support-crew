@@ -30,15 +30,16 @@ public partial class HealthControl : Control
 		_resumeButton.Visible = false;
 		_retryButton.Visible = false;
 		_quitButton.Visible = false;
-		_goalScore = 2;
+		_goalScore = 3;
 		_resumeButton.Pressed += ResumeGame;
 		_retryButton.Pressed += RetryGame;
 		_quitButton.Pressed += QuitGame;
-
 		_healthTimer.Timeout += OnHealthTimerTimeout;
 		
 		//If I try to do this here, Godot can't find it. It can find it if I do it later.
 		//_playerCharacter = GetNode<CharacterBody2D>("/root/Node2D/PlayerCharacter");
+		
+		_scoreLabel.Text = $"Score: {_playerScore} / {_goalScore}";
 		
 		var Laser = GetNode<Laser>("/root/Node2D/Laser");
 		var Launcher = GetNode<Launcher>("/root/Node2D/Launcher");
@@ -67,7 +68,7 @@ public partial class HealthControl : Control
 			DeathEvent();
 		}
 
-		if (_playerScore > _goalScore)
+		if (_playerScore >= _goalScore)
 		{
 			//this doesn't work yet because when it reloads the scene it resets the _goalScore during the _Ready() process
 			_goalScore++;
@@ -79,7 +80,7 @@ public partial class HealthControl : Control
 	{
 		_objectiveItemSprite.ItemResource = null;
 		_playerScore++;
-		_scoreLabel.Text = $"Score: {_playerScore}";
+		_scoreLabel.Text = $"Score: {_playerScore} / {_goalScore}";
 	}
 	
 	private void OnHealthTimerTimeout()
