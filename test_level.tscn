@@ -93,20 +93,28 @@ nine_patch_stretch = true
 texture_progress = ExtResource("10_a25ih")
 tint_progress = Color(0.593134, 0.593134, 0.593134, 0.756863)
 
+[node name="ResumeButton" type="Button" parent="HealthControl"]
+layout_mode = 0
+offset_left = 660.0
+offset_top = 141.0
+offset_right = 942.0
+offset_bottom = 200.0
+text = "Resume"
+
 [node name="RetryButton" type="Button" parent="HealthControl"]
 layout_mode = 0
-offset_left = 659.0
-offset_top = 130.0
-offset_right = 937.0
-offset_bottom = 194.0
+offset_left = 661.0
+offset_top = 248.0
+offset_right = 939.0
+offset_bottom = 312.0
 text = "Retry"
 
 [node name="QuitButton" type="Button" parent="HealthControl"]
 layout_mode = 0
 offset_left = 660.0
-offset_top = 227.0
+offset_top = 358.0
 offset_right = 942.0
-offset_bottom = 286.0
+offset_bottom = 417.0
 text = "Quit"
 
 [node name="Laser" parent="." instance=ExtResource("10_4bgwg")]

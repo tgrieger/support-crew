@@ -15,7 +15,7 @@ public partial class TestCharacter : CharacterBody2D
 	private ItemSprite _objectiveItemSprite;
 	private ProgressBar _healthBar;
 	private Item _heldItem;
-	private bool _canMove;
+	public bool _canMove;
 
 	public override void _Ready()
 	{
@@ -27,7 +27,6 @@ public partial class TestCharacter : CharacterBody2D
 		// TODO don't do this, it's bad practice
 		_objectiveItemSprite = GetNode<ItemSprite>("/root/Node2D/HealthControl/ObjectiveItemSprite");
 		_canMove = true;
-		_healthBar.ValueChanged += HealthLost;
 
 	}
 
@@ -139,15 +138,6 @@ public partial class TestCharacter : CharacterBody2D
 		}
 
 		activatable.Activate();
-	}
-
-	public void HealthLost(double newValue)
-	{
-		if (newValue < 5)
-		{
-			_canMove = false;
-		}
-
 	}
 
 	private void SetHeldItem(Item item)
