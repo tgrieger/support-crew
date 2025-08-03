@@ -51,6 +51,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("6_6emce")
 
+[node name="ScoreLabel" type="Label" parent="HealthControl"]
+offset_left = 938.0
+offset_top = 652.0
+offset_right = 1124.0
+offset_bottom = 713.0
+theme_override_font_sizes/font_size = 34
+text = "Score: 0"
+
 [node name="HealthTimer" type="Timer" parent="HealthControl"]
 unique_name_in_owner = true
 wait_time = 5.0
@@ -100,7 +108,7 @@ offset_right = 942.0
 offset_bottom = 286.0
 text = "Quit"
 
-[node name="Laser" parent="HealthControl" instance=ExtResource("10_4bgwg")]
+[node name="Laser" parent="." instance=ExtResource("10_4bgwg")]
 position = Vector2(287, 116)
 
 [node name="ItemCrate2" parent="." instance=ExtResource("5_sb12i")]
@@ -128,4 +136,4 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_f55p2")
-Nodes = [NodePath("../ItemCrate"), NodePath("../ItemJoiner"), NodePath("../ItemCrate2"), NodePath("../Launcher"), NodePath("../Charger"), NodePath("../Battery"), NodePath("../HealthControl/Laser")]
+Nodes = [NodePath("../ItemCrate"), NodePath("../ItemJoiner"), NodePath("../ItemCrate2"), NodePath("../Launcher"), NodePath("../Charger"), NodePath("../Battery"), NodePath("../Laser")]

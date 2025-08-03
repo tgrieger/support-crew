@@ -3,6 +3,8 @@ using System;
 
 public partial class Laser : Node2D
 {
+	[Signal]
+	public delegate void ObjectiveCompletedEventHandler();
 	private ItemSprite _objectiveItemSprite;
 	private LaserBatteryAttachment _laserBatteryAttachment;
 	private LaserButton _laserButton;
@@ -29,6 +31,7 @@ public partial class Laser : Node2D
 		}
 
 		_laserBatteryAttachment.DurabilityPercentage -= LaserCost;
-		_objectiveItemSprite.ItemResource = null;
+		EmitSignal(SignalName.ObjectiveCompleted);
+		// _objectiveItemSprite.ItemResource = null;
 	}
 }

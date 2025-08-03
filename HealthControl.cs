@@ -8,9 +8,10 @@ public partial class HealthControl : Control
 	private TextureProgressBar _deliveryTimerBar;
 	private Button _retryButton;
 	private Button _quitButton;
-
+	public int _playerScore;
 	private int _objectiveIndex = 0;
 	private readonly string[] _objectives = ["res://Items/Ammo/ammo.tres", "res://Items/LaserBeam/laser_beam.tres"];
+	private Label _scoreLabel;
 
 	public override void _Ready()
 	{
@@ -20,7 +21,7 @@ public partial class HealthControl : Control
 		_deliveryTimerBar = GetNode<TextureProgressBar>("DeliveryTimerBar");
 		_retryButton = GetNode<Button>("RetryButton");
 		_quitButton = GetNode<Button>("QuitButton");
-
+		_scoreLabel = GetNode<Label>("ScoreLabel");
 		_deliveryTimerBar.MaxValue = _healthTimer.WaitTime;
 
 		_retryButton.Visible = false;
@@ -30,6 +31,11 @@ public partial class HealthControl : Control
 		_quitButton.Pressed += QuitGame;
 
 		_healthTimer.Timeout += OnHealthTimerTimeout;
+		
+		var Laser = GetNode<Laser>("/root/Node2D/Laser");
+		var Launcher = GetNode<Launcher>("/root/Node2D/Launcher");
+		Launcher.ObjectiveCompleted += ObjectiveSuccess;
+		Laser.ObjectiveCompleted += ObjectiveSuccess;
 
 		// TODO don't hardcode objective
 		_objectiveItemSprite.ItemResource = ResourceLoader.Load<ItemResource>(GetCurrentObjective());
@@ -44,7 +50,14 @@ public partial class HealthControl : Control
 			DeathEvent();
 		}
 	}
-
+	
+	public void ObjectiveSuccess()
+	{
+		_objectiveItemSprite.ItemResource = null;
+		_playerScore++;
+		_scoreLabel.Text = $"Score: {_playerScore}";
+	}
+	
 	private void OnHealthTimerTimeout()
 	{
 		// If there's no objective, set one and don't decrease health.

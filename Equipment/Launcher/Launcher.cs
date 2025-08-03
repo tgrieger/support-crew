@@ -4,6 +4,8 @@ using SupportCrew.Equipment;
 [Tool]
 public partial class Launcher : StaticBody2D, IAddable, IRetrievable, IActivatable
 {
+	[Signal]
+	public delegate void ObjectiveCompletedEventHandler();
 	private Item _itemSlot;
 
 	[Export]
@@ -56,5 +58,6 @@ public partial class Launcher : StaticBody2D, IAddable, IRetrievable, IActivatab
 		_itemSlot.QueueFree();
 		_itemSlot = null;
 		ItemResource = null;
+		EmitSignal(SignalName.ObjectiveCompleted);
 	}
 }
