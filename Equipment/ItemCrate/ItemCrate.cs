@@ -20,6 +20,8 @@ public partial class ItemCrate : StaticBody2D, IRetrievable
 			}
 		}
 	}
+	
+
 
 	public Item RetrieveItem()
 	{

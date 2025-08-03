@@ -28,5 +28,8 @@ public partial class TestLevel : Node2D
 			player.GlobalPosition = new Vector2(128 * (i + 1), 128 * (i + 1));
 			AddChild(player);
 		}
+		
+		Spawner otherScript = GetNode<Spawner>("SpawnControl");
+		otherScript.RandomSpawner();
 	}
 }

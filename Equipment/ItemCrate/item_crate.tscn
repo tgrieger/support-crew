@@ -14,12 +14,12 @@ collision_mask = 0
 script = ExtResource("1_u43ya")
 Item = ExtResource("2_e1dbw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_u43ya")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_refl0")
 
 [node name="ItemSprite" parent="." instance=ExtResource("3_02304")]
 unique_name_in_owner = true
 scale = Vector2(0.68716, 0.687407)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u43ya")
