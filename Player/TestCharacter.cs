@@ -6,6 +6,9 @@ public partial class TestCharacter : CharacterBody2D
 	[Export]
 	public float Speed { get; set; } = 200.0f;
 
+	[Export]
+	public PlayerResource PlayerResource { get; set; }
+
 	private AnimatedSprite2D _playerAnimatedSprite;
 	private RayCast2D _playerInteraction;
 	private ItemSprite _heldItemSprite;
@@ -42,7 +45,7 @@ public partial class TestCharacter : CharacterBody2D
 	private void HandleMovement()
 	{
 		// Get input direction
-		Vector2 inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+		Vector2 inputDirection = Input.GetVector(PlayerResource.Left, PlayerResource.Right, PlayerResource.Up, PlayerResource.Down);
 		if (inputDirection == Vector2.Zero)
 		{
 			return;
@@ -77,7 +80,7 @@ public partial class TestCharacter : CharacterBody2D
 
 	private void HandleInteraction()
 	{
-		if (!Input.IsActionJustPressed("interact"))
+		if (!Input.IsActionJustPressed(PlayerResource.Interact))
 		{
 			return;
 		}
@@ -113,7 +116,7 @@ public partial class TestCharacter : CharacterBody2D
 
 	private void HandleActivation()
 	{
-		if (!Input.IsActionJustPressed("activate"))
+		if (!Input.IsActionJustPressed(PlayerResource.Activate))
 		{
 			return;
 		}

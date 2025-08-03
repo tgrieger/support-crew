@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=2 format=3 uid="uid://c5i1mg35wxlqk"]
+
+[ext_resource type="Script" uid="uid://8rf0q0f6avyi" path="res://Player/PlayerResource.cs" id="1_0j8cv"]
+
+[resource]
+script = ExtResource("1_0j8cv")
+Up = ""
+Down = ""
+Left = ""
+Right = ""
+Interact = ""
+Activate = ""
+metadata/_custom_type_script = "uid://8rf0q0f6avyi"

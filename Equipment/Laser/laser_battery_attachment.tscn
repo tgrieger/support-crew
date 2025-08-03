@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://0ge5hkphnvyx"]
+[gd_scene load_steps=7 format=3 uid="uid://0ge5hkphnvyx"]
 
 [ext_resource type="Texture2D" uid="uid://udnqwsrf2rpj" path="res://Equipment/Laser/LaserBatteryAttachment.png" id="1_pnw8b"]
 [ext_resource type="Script" uid="uid://doyhnanjarnk7" path="res://Equipment/Laser/LaserBatteryAttachment.cs" id="1_q4n2n"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmvu2"]
 size = Vector2(64, 64)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_104oj"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="LaserBatteryAttachment" type="StaticBody2D"]
 collision_layer = 8
@@ -23,7 +26,9 @@ unique_name_in_owner = true
 
 [node name="Durability" parent="." instance=ExtResource("4_104oj")]
 unique_name_in_owner = true
+visible = false
 offset_left = -31.0
 offset_top = 25.0
 offset_right = 31.0
 offset_bottom = 31.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_104oj")

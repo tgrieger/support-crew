@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PlayerResource" load_steps=2 format=3 uid="uid://daacbsp317rp7"]
+
+[ext_resource type="Script" uid="uid://8rf0q0f6avyi" path="res://Player/PlayerResource.cs" id="1_jdj0g"]
+
+[resource]
+script = ExtResource("1_jdj0g")
+Up = ""
+Down = ""
+Left = ""
+Right = ""
+Interact = ""
+Activate = ""
+metadata/_custom_type_script = "uid://8rf0q0f6avyi"
