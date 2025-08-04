@@ -34,9 +34,6 @@ public partial class HealthControl : Control
 		_retryButton.Pressed += RetryGame;
 		_quitButton.Pressed += QuitGame;
 
-		//If I try to do this here, Godot can't find it. It can find it if I do it later.
-		//_playerCharacter = GetNode<CharacterBody2D>("/root/Node2D/PlayerCharacter");
-
 		_scoreLabel.Text = $"Score: {_playerScore} / {_goalScore}";
 
 		Laser laser = GetNode<Laser>("/root/Node2D/Laser");
@@ -77,7 +74,6 @@ public partial class HealthControl : Control
 
 	private void WinEvent()
 	{
-		//you win bitch
 		DeathEvent();
 		_retryButton.Text = "Next Level";
 	}

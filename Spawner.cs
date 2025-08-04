@@ -29,9 +29,19 @@ public partial class Spawner : Control
 
 		foreach (Node2D node in Nodes)
 		{
+			CollisionShape2D shape = node.GetNode<CollisionShape2D>("CollisionShape2D");
 			int randIndex = GD.RandRange(0, spawnCoordinates.Count - 1);
 			Vector2 randomPoint = spawnCoordinates[randIndex];
 			node.Position = randomPoint;
+			//this is some SHIIIIIIIT
+			Vector2 ZeroPos = new(0, 0);
+			Vector2 OffsetPos = new(32, 0);
+			if (shape.Position != ZeroPos)
+			{
+				node.Position = node.Position + OffsetPos;
+				Vector2 randomPoint2 = spawnCoordinates[randIndex+1];
+				spawnCoordinates.Remove(randomPoint2);
+			}
 			spawnCoordinates.Remove(randomPoint);
 		}
 	}
