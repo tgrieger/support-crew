@@ -12,6 +12,7 @@ public partial class HealthControl : Control
 	private Label _scoreLabel;
 	private int _goalScore;
 	private TestCharacter _playerCharacter;
+	private GlobalData _globalData;
 
 	public delegate void PauseEventHandler();
 	public event PauseEventHandler OnPause;
@@ -21,6 +22,7 @@ public partial class HealthControl : Control
 
 	public override void _Ready()
 	{
+		_globalData = GetNode<GlobalData>("/root/GlobalData");
 		_healthBar = GetNode<ProgressBar>("HealthBar");
 		_resumeButton = GetNode<Button>("ResumeButton");
 		_retryButton = GetNode<Button>("RetryButton");
@@ -29,11 +31,10 @@ public partial class HealthControl : Control
 		_resumeButton.Visible = false;
 		_retryButton.Visible = false;
 		_quitButton.Visible = false;
-		_goalScore = 3;
+		_goalScore = _globalData._goalScore;
 		_resumeButton.Pressed += ResumeGame;
 		_retryButton.Pressed += RetryGame;
 		_quitButton.Pressed += QuitGame;
-
 		_scoreLabel.Text = $"Score: {_playerScore} / {_goalScore}";
 
 		Laser laser = GetNode<Laser>("/root/Node2D/Laser");
@@ -58,6 +59,7 @@ public partial class HealthControl : Control
 
 		if (_playerScore >= _goalScore)
 		{
+			
 			WinEvent();
 		}
 	}
@@ -74,6 +76,8 @@ public partial class HealthControl : Control
 
 	private void WinEvent()
 	{
+		_globalData._goalScore++;
+		_goalScore = _globalData._goalScore;
 		DeathEvent();
 		_retryButton.Text = "Next Level";
 	}
@@ -118,4 +122,7 @@ public partial class HealthControl : Control
 	{
 		return _playerCharacter ??= GetNode<TestCharacter>("/root/Node2D/PlayerCharacter");
 	}
+	
+	
+	
 }
