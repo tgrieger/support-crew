@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bg1q6rlmyl7ae"]
 
 [ext_resource type="Texture2D" uid="uid://bany1cro5xuqh" path="res://Equipment/Laser/LazerButton.png" id="1_p6esj"]
-[ext_resource type="Script" uid="uid://boaql6yyrsgim" path="res://Equipment/Laser/LaserButton.cs" id="1_xu148"]
+[ext_resource type="Script" path="res://Equipment/Laser/LaserButton.cs" id="1_xu148"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iqlx"]
 size = Vector2(64, 64)

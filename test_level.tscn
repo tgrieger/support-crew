@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
 [ext_resource type="PackedScene" uid="uid://c23yb8nmgsmx6" path="res://Player/test_character.tscn" id="2_1c2mv"]
 [ext_resource type="Resource" uid="uid://2ig4rfh5vs2j" path="res://Player/player1.tres" id="3_7fqlb"]
-[ext_resource type="Resource" uid="uid://jj82r8hx3fpa" path="res://Items/Ammo/ammo.tres" id="4_4ptq8"]
 [ext_resource type="Resource" uid="uid://c7mt2ar06s8en" path="res://Player/player2.tres" id="4_e8hb2"]
 [ext_resource type="Resource" uid="uid://cratlbauny3k6" path="res://Items/BrassSheet/brass_sheet.tres" id="4_y646j"]
 [ext_resource type="Resource" uid="uid://c5i1mg35wxlqk" path="res://Player/player3.tres" id="5_ejuk2"]
@@ -12,23 +11,26 @@
 [ext_resource type="Resource" uid="uid://daacbsp317rp7" path="res://Player/player4.tres" id="6_0dbuy"]
 [ext_resource type="Script" uid="uid://b0bmrkl2yhwip" path="res://HealthControl.cs" id="6_6emce"]
 [ext_resource type="PackedScene" uid="uid://bk3qrmekvub24" path="res://Equipment/ItemJoiner/item_joiner.tscn" id="6_gbhdq"]
-[ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://Items/item_sprite.tscn" id="7_6emce"]
+[ext_resource type="Resource" uid="uid://be30bs4s4hpit" path="res://Abilities/LaserBeam/laser_beam.tres" id="7_kvxjt"]
 [ext_resource type="PackedScene" uid="uid://b25n3iaa2fij3" path="res://Equipment/Launcher/launcher.tscn" id="8_6emce"]
+[ext_resource type="Resource" uid="uid://cbohyxmylc7ex" path="res://Abilities/Ammo/ammo.tres" id="8_dny34"]
 [ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="8_lnbra"]
+[ext_resource type="PackedScene" uid="uid://djp6qqdtieyem" path="res://Abilities/ability.tscn" id="8_rptwa"]
 [ext_resource type="PackedScene" uid="uid://c1wuwukkvw632" path="res://Equipment/Laser/laser.tscn" id="10_4bgwg"]
-[ext_resource type="Texture2D" uid="uid://kx1m1wl7r631" path="res://progress-bar-circle.png" id="10_a25ih"]
 [ext_resource type="PackedScene" uid="uid://dnsbrnqjnsv2" path="res://Equipment/Charger/charger.tscn" id="13_4bgwg"]
 [ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="14_2hfll"]
 [ext_resource type="Resource" uid="uid://qf7esf13tny5" path="res://Items/Battery/battery.tres" id="15_7fqlb"]
 [ext_resource type="Script" uid="uid://c4kjmags7m7ym" path="res://Spawner.cs" id="22_f55p2"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("Abilities")]
 script = ExtResource("1_ga11v")
 PlayerScene = ExtResource("2_1c2mv")
 PlayerOneResource = ExtResource("3_7fqlb")
 PlayerTwoResource = ExtResource("4_e8hb2")
 PlayerThreeResource = ExtResource("5_ejuk2")
 PlayerFourResource = ExtResource("6_0dbuy")
+AbilityResources = Array[Object]([ExtResource("7_kvxjt"), ExtResource("8_dny34")])
+Abilities = [NodePath("HealthControl/Ability1"), NodePath("HealthControl/Ability2")]
 
 [node name="EnvironmentTileMap" parent="." instance=ExtResource("1_gojnm")]
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAQAAAAAAAAAAAANAAQAAAAAAAAAAAANAAMAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAMAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAYAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAABAAkAAAABAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAABAAAAAAARAAEAAAABAAAAAAARAAIAAAABAAAAAAARAAMAAAABAAAAAAARAAQAAAABAAAAAAARAAUAAAABAAAAAAARAAYAAAABAAAAAAARAAcAAAABAAAAAAARAAgAAAABAAAAAAARAAkAAAABAAAAAAAQAAkAAAABAAAAAAAPAAkAAAABAAAAAAAOAAkAAAABAAAAAAANAAkAAAABAAAAAAAMAAkAAAABAAAAAAALAAkAAAABAAAAAAAKAAkAAAABAAAAAAAJAAkAAAABAAAAAAAIAAkAAAABAAAAAAAHAAkAAAABAAAAAAAGAAkAAAABAAAAAAAFAAkAAAABAAAAAAAEAAkAAAABAAAAAAADAAkAAAABAAAAAAACAAkAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAAAAAYAAAABAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAABAAAAAAA=")
@@ -74,26 +76,8 @@ offset_right = 571.0
 offset_bottom = 719.0
 value = 100.0
 
-[node name="ObjectiveItemSprite" parent="HealthControl" instance=ExtResource("7_6emce")]
-unique_name_in_owner = true
-position = Vector2(629, 684)
-scale = Vector2(1.10938, 1.09375)
-ItemResource = ExtResource("4_4ptq8")
-
-[node name="DeliveryTimerBar" type="TextureProgressBar" parent="HealthControl"]
-layout_mode = 0
-offset_left = 590.0
-offset_top = 648.0
-offset_right = 668.0
-offset_bottom = 720.0
-step = 0.1
-value = 2.0
-fill_mode = 5
-nine_patch_stretch = true
-texture_progress = ExtResource("10_a25ih")
-tint_progress = Color(0.593134, 0.593134, 0.593134, 0.756863)
-
 [node name="ResumeButton" type="Button" parent="HealthControl"]
+z_index = 1
 layout_mode = 0
 offset_left = 660.0
 offset_top = 141.0
@@ -102,6 +86,7 @@ offset_bottom = 200.0
 text = "Resume"
 
 [node name="RetryButton" type="Button" parent="HealthControl"]
+z_index = 1
 layout_mode = 0
 offset_left = 661.0
 offset_top = 248.0
@@ -110,12 +95,19 @@ offset_bottom = 312.0
 text = "Retry"
 
 [node name="QuitButton" type="Button" parent="HealthControl"]
+z_index = 1
 layout_mode = 0
 offset_left = 660.0
 offset_top = 358.0
 offset_right = 942.0
 offset_bottom = 417.0
 text = "Quit"
+
+[node name="Ability1" parent="HealthControl" instance=ExtResource("8_rptwa")]
+position = Vector2(631, 684)
+
+[node name="Ability2" parent="HealthControl" instance=ExtResource("8_rptwa")]
+position = Vector2(703, 683)
 
 [node name="Laser" parent="." instance=ExtResource("10_4bgwg")]
 position = Vector2(287, 116)
@@ -132,7 +124,6 @@ position = Vector2(237, 348)
 [node name="Charger" parent="." instance=ExtResource("13_4bgwg")]
 unique_name_in_owner = true
 position = Vector2(510, 292)
-collision_layer = 8
 
 [node name="Battery" parent="." instance=ExtResource("14_2hfll")]
 unique_name_in_owner = true

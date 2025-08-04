@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=3 format=3 uid="uid://cbohyxmylc7ex"]
+
+[ext_resource type="Texture2D" uid="uid://qbtsh66033jf" path="res://Art/Ammo.png" id="1_dwwe1"]
+[ext_resource type="Script" uid="uid://djwjhwkkai6b8" path="res://Abilities/AbilityResource.cs" id="1_m7ieu"]
+
+[resource]
+script = ExtResource("1_m7ieu")
+AbilityName = "Ammo"
+CooldownTime = 5.0
+ExpirationTime = 10.0
+AbilityTexture = ExtResource("1_dwwe1")
+metadata/_custom_type_script = "uid://djwjhwkkai6b8"

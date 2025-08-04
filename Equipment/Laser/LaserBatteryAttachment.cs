@@ -6,7 +6,8 @@ public partial class LaserBatteryAttachment : StaticBody2D, IAddable, IRetrievab
 {
 	private double _durabilityPercentage;
 	private Durability _durability;
-	private Item _itemSlot;
+
+	public Item ItemSlot { get; private set; }
 
 	[Export]
 	public ItemResource ItemResource
@@ -34,9 +35,9 @@ public partial class LaserBatteryAttachment : StaticBody2D, IAddable, IRetrievab
 				_durability.DurabilityPercentage = value;
 			}
 
-			if (_itemSlot is not null)
+			if (ItemSlot is not null)
 			{
-				_itemSlot.DurabilityPercentage = value;
+				ItemSlot.DurabilityPercentage = value;
 			}
 		}
 	}
@@ -55,23 +56,23 @@ public partial class LaserBatteryAttachment : StaticBody2D, IAddable, IRetrievab
 			return false;
 		}
 
-		if (_itemSlot is not null)
+		if (ItemSlot is not null)
 		{
 			return false;
 		}
 
-		_itemSlot = item;
-		ItemResource = _itemSlot.ItemResource;
+		ItemSlot = item;
+		ItemResource = ItemSlot.ItemResource;
 		_durability.Visible = true;
-		DurabilityPercentage = _itemSlot.DurabilityPercentage;
+		DurabilityPercentage = ItemSlot.DurabilityPercentage;
 
 		return true;
 	}
 
 	public Item RetrieveItem()
 	{
-		Item returnItem = _itemSlot;
-		_itemSlot = null;
+		Item returnItem = ItemSlot;
+		ItemSlot = null;
 		ItemResource = null;
 		_durability.Visible = false;
 

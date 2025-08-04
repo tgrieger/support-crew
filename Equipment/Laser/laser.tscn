@@ -1,14 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1wuwukkvw632"]
+[gd_scene load_steps=8 format=3 uid="uid://c1wuwukkvw632"]
 
 [ext_resource type="Script" uid="uid://cffbsirs4l85j" path="res://Equipment/Laser/Laser.cs" id="1_2y3vl"]
 [ext_resource type="PackedScene" uid="uid://0ge5hkphnvyx" path="res://Equipment/Laser/laser_battery_attachment.tscn" id="2_2y3vl"]
-[ext_resource type="PackedScene" uid="uid://bg1q6rlmyl7ae" path="res://Equipment/Laser/laser_button.tscn" id="3_2y3vl"]
+[ext_resource type="Texture2D" uid="uid://bany1cro5xuqh" path="res://Equipment/Laser/LazerButton.png" id="3_2y3vl"]
 
-[node name="Laser" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y3vl"]
+size = Vector2(64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2y3vl"]
+atlas = ExtResource("3_2y3vl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x64g"]
+atlas = ExtResource("3_2y3vl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7x64g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y3vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x64g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x64g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2y3vl")
+}],
+"loop": false,
+"name": &"ButtonPressed",
+"speed": 10.0
+}]
+
+[node name="Laser" type="StaticBody2D"]
+collision_layer = 8
 script = ExtResource("1_2y3vl")
 
 [node name="LaserBatteryAttachment" parent="." instance=ExtResource("2_2y3vl")]
 position = Vector2(-32, 0)
 
-[node name="LaserButton" parent="." instance=ExtResource("3_2y3vl")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_2y3vl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_7x64g")
+animation = &"ButtonPressed"
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://Equipment/Laser",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Art/Raw/LazerButton.aseprite",
+"source_uid": 2272366939462295970
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f0e3cab9c27c391a6ff5f2a58c3cb635"

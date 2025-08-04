@@ -1,37 +1,30 @@
 using Godot;
-using System;
+using SupportCrew.Equipment;
 
-public partial class Laser : Node2D
+public partial class Laser : StaticBody2D, IActivatable
 {
 	[Signal]
 	public delegate void ObjectiveCompletedEventHandler();
-	private ItemSprite _objectiveItemSprite;
 	private LaserBatteryAttachment _laserBatteryAttachment;
-	private LaserButton _laserButton;
+	private AnimatedSprite2D _buttonAnimatedSprite;
 
 	[Export] public double LaserCost { get; set; } = 50;
 
 	public override void _Ready()
 	{
-		// TODO don't do this, it's bad practice
-		_objectiveItemSprite = GetNode<ItemSprite>("/root/Node2D/HealthControl/ObjectiveItemSprite");
-
+		_buttonAnimatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		_laserBatteryAttachment = GetNode<LaserBatteryAttachment>("LaserBatteryAttachment");
-		_laserButton = GetNode<LaserButton>("LaserButton");
-
-		_laserButton.OnLaserPushed += OnLaserPushed;
 	}
 
-	private void OnLaserPushed()
+	public bool CanActivate()
 	{
-		if (_laserBatteryAttachment.ItemResource is null || _laserBatteryAttachment.DurabilityPercentage < LaserCost || _objectiveItemSprite.ItemResource?.Name != "Laser Beam")
-		{
-			// Don't fire the laser if it's not the objective
-			return;
-		}
+		_buttonAnimatedSprite.Play("ButtonPressed");
+		return _laserBatteryAttachment.ItemResource is not null && !(_laserBatteryAttachment.DurabilityPercentage < LaserCost);
+	}
 
+	public void Activate()
+	{
 		_laserBatteryAttachment.DurabilityPercentage -= LaserCost;
 		EmitSignal(SignalName.ObjectiveCompleted);
-		// _objectiveItemSprite.ItemResource = null;
 	}
 }

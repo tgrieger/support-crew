@@ -9,36 +9,36 @@ public partial class TestCharacter : CharacterBody2D
 	[Export]
 	public PlayerResource PlayerResource { get; set; }
 
+	[Export]
+	public bool CanMove { get; set; }
+
+	public delegate void ActivationHandler(GodotObject collider);
+	public event ActivationHandler ActivationEvent;
+
 	private AnimatedSprite2D _playerAnimatedSprite;
 	private RayCast2D _playerInteraction;
 	private ItemSprite _heldItemSprite;
-	private ItemSprite _objectiveItemSprite;
-	private ProgressBar _healthBar;
 	private Item _heldItem;
-	public bool _canMove;
 
 	public override void _Ready()
 	{
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
 		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
 		_heldItemSprite = GetNode<ItemSprite>("HeldItemSprite");
-		_healthBar = GetNode<ProgressBar>("/root/Node2D/HealthControl/HealthBar");
 
-		// TODO don't do this, it's bad practice
-		_objectiveItemSprite = GetNode<ItemSprite>("/root/Node2D/HealthControl/ObjectiveItemSprite");
-		_canMove = true;
-
+		CanMove = true;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if(_canMove == true)
+		if (!CanMove)
 		{
-			HandleMovement();
-			HandleInteraction();
-			HandleActivation();
+			return;
 		}
 
+		HandleMovement();
+		HandleInteraction();
+		HandleActivation();
 	}
 
 	private void HandleMovement()
@@ -121,23 +121,7 @@ public partial class TestCharacter : CharacterBody2D
 		}
 
 		GodotObject collider = _playerInteraction.GetCollider();
-		if (collider is not IActivatable activatable)
-		{
-			return;
-		}
-
-		if (activatable is Launcher launcher)
-		{
-			if (launcher.ItemResource != _objectiveItemSprite.ItemResource)
-			{
-				// Don't allow launching things that aren't the objective
-				return;
-			}
-
-			_objectiveItemSprite.ItemResource = null;
-		}
-
-		activatable.Activate();
+		ActivationEvent?.Invoke(collider);
 	}
 
 	private void SetHeldItem(Item item)

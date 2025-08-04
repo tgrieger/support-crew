@@ -48,13 +48,13 @@ public partial class Launcher : StaticBody2D, IAddable, IRetrievable, IActivatab
 		return returnItem;
 	}
 
+	public bool CanActivate()
+	{
+		return _itemSlot is not null;
+	}
+
 	public void Activate()
 	{
-		if (_itemSlot is null)
-		{
-			return;
-		}
-
 		_itemSlot.QueueFree();
 		_itemSlot = null;
 		ItemResource = null;

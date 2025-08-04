@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dowogpk6obb5m"]
 
-[ext_resource type="Texture2D" uid="uid://bruft2svt6l55" path="res://Items/LaserBeam/LaserBeam.png" id="1_hs2br"]
+[ext_resource type="Texture2D" uid="uid://bruft2svt6l55" path="res://Abilities/LaserBeam/LaserBeam.png" id="1_hs2br"]
 [ext_resource type="Script" uid="uid://l2rv4a4y48g6" path="res://Items/ItemResource.cs" id="1_qfy5p"]
 
 [resource]

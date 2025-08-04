@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bruft2svt6l55"
-path="res://.godot/imported/LaserBeam.png-20142b9fc69e2329e4bad33b45e9ea78.ctex"
+uid="uid://qbtsh66033jf"
+path="res://.godot/imported/Ammo.png-611d6db12a963c5aa9562a8579a4b28a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Items/LaserBeam/LaserBeam.png"
-dest_files=["res://.godot/imported/LaserBeam.png-20142b9fc69e2329e4bad33b45e9ea78.ctex"]
+source_file="res://Art/Ammo.png"
+dest_files=["res://.godot/imported/Ammo.png-611d6db12a963c5aa9562a8579a4b28a.ctex"]
 
 [params]
 

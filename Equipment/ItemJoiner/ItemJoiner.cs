@@ -97,18 +97,25 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 		return returnItem;
 	}
 
-	public void Activate()
+	public bool CanActivate()
 	{
 		if (_itemSlot1 is null || _itemSlot2 is null)
 		{
-			return;
+			return false;
 		}
 
 		ItemResource recipeOutput = RecipeManager.GetRecipeOutput(ItemResource1, ItemResource2);
 		if (recipeOutput is null)
 		{
-			return;
+			return false;
 		}
+
+		return true;
+	}
+
+	public void Activate()
+	{
+		ItemResource recipeOutput = RecipeManager.GetRecipeOutput(ItemResource1, ItemResource2);
 
 		_itemSlot1 = null;
 		ItemResource1 = null;
