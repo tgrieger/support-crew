@@ -21,4 +21,7 @@ public partial class PlayerResource : Resource
 
 	[Export]
 	public string Activate { get; set; }
+
+	[Export]
+	public string Sprint { get; set; }
 }
