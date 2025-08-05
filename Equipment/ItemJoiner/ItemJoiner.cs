@@ -99,7 +99,7 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 
 	public bool CanActivate()
 	{
-		if (_itemSlot1 is null || _itemSlot2 is null)
+		if (_itemSlot1 is null || _itemSlot2 is null || OutputItemResource is not null)
 		{
 			return false;
 		}
