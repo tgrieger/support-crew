@@ -75,7 +75,13 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 	public Item RetrieveItem()
 	{
 		Item returnItem = null;
-		if (_itemSlot2 is not null)
+		if (_outputItemSlot is not null)
+		{
+			returnItem = _outputItemSlot;
+			_outputItemSlot = null;
+			OutputItemResource = null;
+		}
+		else if (_itemSlot2 is not null)
 		{
 			returnItem = _itemSlot2;
 			_itemSlot2 = null;
@@ -86,12 +92,6 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 			returnItem = _itemSlot1;
 			_itemSlot1 = null;
 			ItemResource1 = null;
-		}
-		else if (_outputItemSlot is not null)
-		{
-			returnItem = _outputItemSlot;
-			_outputItemSlot = null;
-			OutputItemResource = null;
 		}
 
 		return returnItem;
