@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=23 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="Script" uid="uid://wfbb2mr37kh1" path="res://TestLevel.cs" id="1_ga11v"]
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="14_2hfll"]
 [ext_resource type="Resource" uid="uid://qf7esf13tny5" path="res://Items/Battery/battery.tres" id="15_7fqlb"]
 [ext_resource type="Script" uid="uid://c4kjmags7m7ym" path="res://Spawner.cs" id="22_f55p2"]
+[ext_resource type="AudioStream" uid="uid://twi82oobx8ow" path="res://Audio/sax_1.wav" id="22_kvxjt"]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("Abilities")]
 script = ExtResource("1_ga11v")
@@ -137,3 +138,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_f55p2")
 Nodes = [NodePath("../Laser"), NodePath("../ItemCrate"), NodePath("../ItemJoiner"), NodePath("../ItemCrate2"), NodePath("../Launcher"), NodePath("../Charger"), NodePath("../Battery")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_kvxjt")
+volume_db = -14.41
+autoplay = true
