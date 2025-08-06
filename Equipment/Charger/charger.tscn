@@ -1,15 +1,90 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnsbrnqjnsv2"]
+[gd_scene load_steps=19 format=3 uid="uid://dnsbrnqjnsv2"]
 
-[ext_resource type="Texture2D" uid="uid://cev7oxc7cwcey" path="res://Equipment/Charger/Charger.png" id="1_1u2bg"]
+[ext_resource type="Texture2D" uid="uid://jlietritonpk" path="res://Equipment/Charger/Charger.png" id="1_1u2bg"]
 [ext_resource type="Script" uid="uid://clmtvulk5recm" path="res://Equipment/Charger/Charger.cs" id="1_gfcec"]
 [ext_resource type="PackedScene" uid="uid://b56ug557njcyy" path="res://Items/item_sprite.tscn" id="3_nvvmq"]
 [ext_resource type="PackedScene" uid="uid://skrxv1vowsns" path="res://durability.tscn" id="4_loajv"]
+[ext_resource type="Texture2D" uid="uid://tja0ilo4mttr" path="res://Equipment/Charger/Treadmill.png" id="5_v5iy1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfcec"]
 size = Vector2(64, 64)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_loajv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5iy1"]
 bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opuhf"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bakof"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkw8x"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4qre"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jdg5"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lci8"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmokr"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e22ly"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42xxf"]
+atlas = ExtResource("5_v5iy1")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ol8ad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opuhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bakof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkw8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4qre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jdg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lci8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmokr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e22ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42xxf")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 30.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5iy1"]
+size = Vector2(64, 64)
 
 [node name="Charger" type="StaticBody2D"]
 collision_layer = 8
@@ -17,21 +92,58 @@ script = ExtResource("1_gfcec")
 DurabilityPercentage = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-32, 0)
 shape = SubResource("RectangleShape2D_gfcec")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-32, 0)
 texture = ExtResource("1_1u2bg")
 
 [node name="ItemSprite" parent="." instance=ExtResource("3_nvvmq")]
 unique_name_in_owner = true
+position = Vector2(-32, 0)
 
 [node name="Durability" parent="." instance=ExtResource("4_loajv")]
 unique_name_in_owner = true
 visible = false
-offset_left = -31.0
+offset_left = -63.0
 offset_top = 25.0
-offset_right = 31.0
+offset_right = -1.0
 offset_bottom = 31.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_loajv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_v5iy1")
 value = 100.0
 DurabilityPercentage = 100.0
+
+[node name="TreadmillAnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_ol8ad")
+animation = &"moving"
+frame = 3
+frame_progress = 0.489904
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://Equipment/Charger",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Art/Raw/Treadmill.aseprite",
+"source_uid": 5135769090451727968
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7a402c89af200db69fa3c0b4537c0fbb"
+
+[node name="TreadmillArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreadmillArea"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_v5iy1")

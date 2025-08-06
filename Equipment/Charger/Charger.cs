@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using SupportCrew.Equipment;
 
 [Tool]
@@ -7,6 +8,8 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 	private double _durabilityPercentage;
 	private Durability _durability;
 	private Item _itemSlot;
+	private Area2D _treadmillArea;
+	private AnimatedSprite2D _treadmillAnimatedSprite;
 
 	[Export] public double ChargingRate { get; set; } = 50;
 
@@ -48,10 +51,14 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 		_durability = GetNode<Durability>("Durability");
 		_durability.Visible = ItemResource?.HasDurability ?? false;
 		_durability.DurabilityPercentage = _durabilityPercentage;
+
+		_treadmillArea = GetNode<Area2D>("TreadmillArea");
+		_treadmillAnimatedSprite = GetNode<AnimatedSprite2D>("TreadmillAnimatedSprite");
 	}
 
 	public override void _Process(double delta)
 	{
+		_treadmillAnimatedSprite.Pause();
 		ChargeBattery(delta);
 	}
 
@@ -97,6 +104,12 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 			return;
 		}
 
+		if (!PlayerRunning())
+		{
+			return;
+		}
+
+		_treadmillAnimatedSprite.Play("moving");
 		double amountToCharge = ChargingRate * delta;
 		if (DurabilityPercentage + amountToCharge >= 100)
 		{
@@ -105,5 +118,26 @@ public partial class Charger : StaticBody2D, IAddable, IRetrievable
 		}
 
 		DurabilityPercentage += amountToCharge;
+	}
+
+	private bool PlayerRunning()
+	{
+		Array<Node2D> nodes = _treadmillArea.GetOverlappingBodies();
+		foreach (Node2D node in nodes)
+		{
+			if (node is not TestCharacter testCharacter)
+			{
+				continue;
+			}
+
+			if (!Input.IsActionPressed(testCharacter.PlayerResource.Left))
+			{
+				continue;
+			}
+
+			return true;
+		}
+
+		return false;
 	}
 }

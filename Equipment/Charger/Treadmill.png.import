@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jlietritonpk"
-path="res://.godot/imported/Charger.png-7a461ac7ceb2476fecfd5ad7e7dfaaf3.ctex"
+uid="uid://tja0ilo4mttr"
+path="res://.godot/imported/Treadmill.png-d3f01de0e4608c26b3fe2badba32da3e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Equipment/Charger/Charger.png"
-dest_files=["res://.godot/imported/Charger.png-7a461ac7ceb2476fecfd5ad7e7dfaaf3.ctex"]
+source_file="res://Equipment/Charger/Treadmill.png"
+dest_files=["res://.godot/imported/Treadmill.png-d3f01de0e4608c26b3fe2badba32da3e.ctex"]
 
 [params]
 
