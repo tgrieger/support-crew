@@ -7,9 +7,6 @@ public partial class TestCharacter : CharacterBody2D
 	public float Speed { get; set; } = 200.0f;
 
 	[Export]
-	public float SprintSpeed { get; set; } = 300.0f;
-
-	[Export]
 	public PlayerResource PlayerResource { get; set; }
 
 	[Export]
@@ -22,7 +19,6 @@ public partial class TestCharacter : CharacterBody2D
 	private RayCast2D _playerInteraction;
 	private ItemSprite _heldItemSprite;
 	private Item _heldItem;
-	private bool _sprintToggle = false;
 
 	public override void _Ready()
 	{
@@ -47,11 +43,6 @@ public partial class TestCharacter : CharacterBody2D
 
 	private void HandleMovement()
 	{
-		if (Input.IsActionJustPressed(PlayerResource.Sprint))
-		{
-			_sprintToggle = !_sprintToggle;
-		}
-
 		// Get input direction
 		Vector2 inputDirection = Input.GetVector(PlayerResource.Left, PlayerResource.Right, PlayerResource.Up, PlayerResource.Down);
 		if (inputDirection == Vector2.Zero)
@@ -64,7 +55,7 @@ public partial class TestCharacter : CharacterBody2D
 		_playerInteraction.TargetPosition = inputDirection * 48;
 
 		// Set velocity based on input and speed
-		Velocity = inputDirection * (_sprintToggle ? SprintSpeed : Speed);
+		Velocity = inputDirection * Speed;
 		if (inputDirection.Y < 0)
 		{
 			_playerAnimatedSprite.Play("Up");
