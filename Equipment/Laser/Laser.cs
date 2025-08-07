@@ -16,7 +16,7 @@ public partial class Laser : StaticBody2D, IActivatable
 		_laserBatteryAttachment = GetNode<LaserBatteryAttachment>("LaserBatteryAttachment");
 	}
 
-	public bool CanActivate()
+	public bool CanActivate(TestCharacter character)
 	{
 		_buttonAnimatedSprite.Play("ButtonPressed");
 		return _laserBatteryAttachment.ItemResource is not null && !(_laserBatteryAttachment.DurabilityPercentage < LaserCost);

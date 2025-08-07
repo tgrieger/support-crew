@@ -48,7 +48,7 @@ public partial class Launcher : StaticBody2D, IAddable, IRetrievable, IActivatab
 		return returnItem;
 	}
 
-	public bool CanActivate()
+	public bool CanActivate(TestCharacter character)
 	{
 		return _itemSlot is not null;
 	}

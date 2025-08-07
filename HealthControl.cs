@@ -59,7 +59,7 @@ public partial class HealthControl : Control
 
 		if (_playerScore >= _goalScore)
 		{
-			
+
 			WinEvent();
 		}
 	}
@@ -86,7 +86,7 @@ public partial class HealthControl : Control
 	{
 		_retryButton.Visible = true;
 		_quitButton.Visible = true;
-		GetPlayerCharacter().CanMove = false;
+		GetPlayerCharacter().IsPaused = false;
 		OnPause?.Invoke();
 	}
 
@@ -96,7 +96,7 @@ public partial class HealthControl : Control
 		_retryButton.Visible = false;
 		_quitButton.Visible = false;
 
-		GetPlayerCharacter().CanMove = true;
+		GetPlayerCharacter().IsPaused = true;
 		OnResume?.Invoke();
 	}
 
@@ -122,7 +122,7 @@ public partial class HealthControl : Control
 	{
 		return _playerCharacter ??= GetNode<TestCharacter>("/root/Node2D/PlayerCharacter");
 	}
-	
-	
-	
+
+
+
 }

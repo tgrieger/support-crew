@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://m7frsh808fhg"]
+[gd_scene load_steps=25 format=4 uid="uid://m7frsh808fhg"]
 
 [ext_resource type="Script" uid="uid://wfbb2mr37kh1" path="res://TestLevel.cs" id="1_ga11v"]
 [ext_resource type="PackedScene" uid="uid://b7w0ui4ia7sra" path="res://Art/environment_tile_map.tscn" id="1_gojnm"]
@@ -16,12 +16,14 @@
 [ext_resource type="Resource" uid="uid://cbohyxmylc7ex" path="res://Abilities/Ammo/ammo.tres" id="8_dny34"]
 [ext_resource type="Resource" uid="uid://cndyx86elmnf7" path="res://Items/Gunpowder/gunpowder.tres" id="8_lnbra"]
 [ext_resource type="PackedScene" uid="uid://djp6qqdtieyem" path="res://Abilities/ability.tscn" id="8_rptwa"]
+[ext_resource type="Resource" uid="uid://qo7g0fma6ygt" path="res://Abilities/Computer/computer.tres" id="9_rptwa"]
 [ext_resource type="PackedScene" uid="uid://c1wuwukkvw632" path="res://Equipment/Laser/laser.tscn" id="10_4bgwg"]
 [ext_resource type="PackedScene" uid="uid://dnsbrnqjnsv2" path="res://Equipment/Charger/charger.tscn" id="13_4bgwg"]
 [ext_resource type="PackedScene" uid="uid://5bpsflocpdu" path="res://Items/item.tscn" id="14_2hfll"]
 [ext_resource type="Resource" uid="uid://qf7esf13tny5" path="res://Items/Battery/battery.tres" id="15_7fqlb"]
 [ext_resource type="Script" uid="uid://c4kjmags7m7ym" path="res://Spawner.cs" id="22_f55p2"]
 [ext_resource type="AudioStream" uid="uid://twi82oobx8ow" path="res://Audio/sax_1.wav" id="22_kvxjt"]
+[ext_resource type="PackedScene" uid="uid://ysjojngogcyn" path="res://Equipment/Computer/computer.tscn" id="23_kvxjt"]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("Abilities")]
 script = ExtResource("1_ga11v")
@@ -30,8 +32,8 @@ PlayerOneResource = ExtResource("3_7fqlb")
 PlayerTwoResource = ExtResource("4_e8hb2")
 PlayerThreeResource = ExtResource("5_ejuk2")
 PlayerFourResource = ExtResource("6_0dbuy")
-AbilityResources = Array[Object]([ExtResource("8_dny34"), ExtResource("7_kvxjt")])
-Abilities = [NodePath("HealthControl/Ability1"), NodePath("HealthControl/Ability2")]
+AbilityResources = Array[Object]([ExtResource("8_dny34"), ExtResource("7_kvxjt"), ExtResource("9_rptwa")])
+Abilities = [NodePath("HealthControl/Ability1"), NodePath("HealthControl/Ability2"), NodePath("HealthControl/Ability3")]
 
 [node name="EnvironmentTileMap" parent="." instance=ExtResource("1_gojnm")]
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAACAAUAAAAAAAAAAAACAAYAAAAAAAAAAAACAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAPAAIAAAAAAAAAAAAOAAIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAAPAAYAAAAAAAAAAAAPAAUAAAAAAAAAAAAPAAQAAAAAAAAAAAAPAAMAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAQAAAAAAAAAAAANAAQAAAAAAAAAAAANAAMAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAMAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAALAAQAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAUAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAJAAQAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAYAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAYAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAABAAkAAAABAAAAAAABAAgAAAAAAAAAAAABAAcAAAAAAAAAAAABAAYAAAAAAAAAAAABAAUAAAAAAAAAAAABAAQAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAHAAAAAAABAAAAAAAIAAAAAAABAAAAAAAJAAAAAAABAAAAAAAKAAAAAAABAAAAAAALAAAAAAABAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAOAAAAAAABAAAAAAAPAAAAAAABAAAAAAAQAAAAAAABAAAAAAARAAAAAAABAAAAAAARAAEAAAABAAAAAAARAAIAAAABAAAAAAARAAMAAAABAAAAAAARAAQAAAABAAAAAAARAAUAAAABAAAAAAARAAYAAAABAAAAAAARAAcAAAABAAAAAAARAAgAAAABAAAAAAARAAkAAAABAAAAAAAQAAkAAAABAAAAAAAPAAkAAAABAAAAAAAOAAkAAAABAAAAAAANAAkAAAABAAAAAAAMAAkAAAABAAAAAAALAAkAAAABAAAAAAAKAAkAAAABAAAAAAAJAAkAAAABAAAAAAAIAAkAAAABAAAAAAAHAAkAAAABAAAAAAAGAAkAAAABAAAAAAAFAAkAAAABAAAAAAAEAAkAAAABAAAAAAADAAkAAAABAAAAAAACAAkAAAABAAAAAAAAAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAAAAAYAAAABAAAAAAAAAAcAAAABAAAAAAAAAAgAAAABAAAAAAAAAAkAAAABAAAAAAA=")
@@ -105,10 +107,13 @@ offset_bottom = 417.0
 text = "Quit"
 
 [node name="Ability1" parent="HealthControl" instance=ExtResource("8_rptwa")]
-position = Vector2(631, 684)
+position = Vector2(630, 685)
 
 [node name="Ability2" parent="HealthControl" instance=ExtResource("8_rptwa")]
-position = Vector2(703, 683)
+position = Vector2(704, 685)
+
+[node name="Ability3" parent="HealthControl" instance=ExtResource("8_rptwa")]
+position = Vector2(778, 685)
 
 [node name="Laser" parent="." instance=ExtResource("10_4bgwg")]
 position = Vector2(291, 137)
@@ -137,9 +142,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("22_f55p2")
-Nodes = [NodePath("../Laser"), NodePath("../ItemCrate"), NodePath("../ItemJoiner"), NodePath("../ItemCrate2"), NodePath("../Launcher"), NodePath("../Charger"), NodePath("../Battery")]
+Nodes = [NodePath("../Laser"), NodePath("../ItemCrate"), NodePath("../ItemJoiner"), NodePath("../ItemCrate2"), NodePath("../Launcher"), NodePath("../Charger"), NodePath("../Battery"), NodePath("../Computer")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_kvxjt")
-volume_db = -14.41
+volume_db = -20.675
 autoplay = true
+
+[node name="Computer" parent="." instance=ExtResource("23_kvxjt")]
+position = Vector2(143, 248)

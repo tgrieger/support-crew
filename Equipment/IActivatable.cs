@@ -2,6 +2,6 @@ namespace SupportCrew.Equipment;
 
 public interface IActivatable
 {
-	bool CanActivate();
+	bool CanActivate(TestCharacter character);
 	void Activate();
 }

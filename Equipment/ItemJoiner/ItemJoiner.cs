@@ -97,7 +97,7 @@ public partial class ItemJoiner : StaticBody2D, IAddable, IRetrievable, IActivat
 		return returnItem;
 	}
 
-	public bool CanActivate()
+	public bool CanActivate(TestCharacter character)
 	{
 		if (_itemSlot1 is null || _itemSlot2 is null || OutputItemResource is not null)
 		{

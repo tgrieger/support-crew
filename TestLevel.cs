@@ -53,14 +53,14 @@ public partial class TestLevel : Node2D
 		}
 	}
 
-	private void HandleActivationEvent(GodotObject collider)
+	private void HandleActivationEvent(GodotObject collider, TestCharacter character)
 	{
 		if (collider is not IActivatable activatable)
 		{
 			return;
 		}
 
-		if (!activatable.CanActivate())
+		if (!activatable.CanActivate(character))
 		{
 			return;
 		}
@@ -79,6 +79,7 @@ public partial class TestLevel : Node2D
 			{
 				case Launcher launcher when ability.CanCompleteEvent(launcher.ItemResource.Name):
 				case Laser when ability.CanCompleteEvent("Laser Beam"):
+				case Computer when ability.CanCompleteEvent("Computer"):
 					activatable.Activate();
 					ability.CompleteEvent();
 					return;

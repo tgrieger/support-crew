@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=3 format=3 uid="uid://qo7g0fma6ygt"]
+
+[ext_resource type="Script" uid="uid://djwjhwkkai6b8" path="res://Abilities/AbilityResource.cs" id="1_s44bt"]
+[ext_resource type="Texture2D" uid="uid://t7br7cvxyv7m" path="res://Art/Screen.png" id="1_xtxge"]
+
+[resource]
+script = ExtResource("1_s44bt")
+AbilityName = "Computer"
+CooldownTime = 20.0
+ExpirationTime = 10.0
+AbilityTexture = ExtResource("1_xtxge")
+metadata/_custom_type_script = "uid://djwjhwkkai6b8"

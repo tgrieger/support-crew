@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=3 uid="uid://ysjojngogcyn"]
+
+[ext_resource type="Script" uid="uid://ciafi5ux37pvf" path="res://Equipment/Computer/Computer.cs" id="1_k0psm"]
+[ext_resource type="Texture2D" uid="uid://csddu6vwfuvha" path="res://Equipment/Computer/ArrowUp.png" id="2_uarj0"]
+[ext_resource type="Texture2D" uid="uid://bbk38yj5vajlh" path="res://Equipment/Computer/ArrowRight.png" id="3_q3v2o"]
+[ext_resource type="Texture2D" uid="uid://dy0um2bv3erbx" path="res://Equipment/Computer/ArrowDown.png" id="4_utm4t"]
+[ext_resource type="Texture2D" uid="uid://r48esi0une6y" path="res://Equipment/Computer/ArrowLeft.png" id="5_vxpxq"]
+[ext_resource type="Texture2D" uid="uid://t7br7cvxyv7m" path="res://Art/Screen.png" id="6_qir3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfy71"]
+size = Vector2(64, 64)
+
+[node name="Computer" type="StaticBody2D"]
+collision_layer = 8
+script = ExtResource("1_k0psm")
+UpArrow = ExtResource("2_uarj0")
+RightArrow = ExtResource("3_q3v2o")
+DownArrow = ExtResource("4_utm4t")
+LeftArrow = ExtResource("5_vxpxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lfy71")
+
+[node name="ScreenSprite" type="Sprite2D" parent="."]
+texture = ExtResource("6_qir3w")
+
+[node name="ArrowSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1

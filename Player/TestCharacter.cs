@@ -10,9 +10,12 @@ public partial class TestCharacter : CharacterBody2D
 	public PlayerResource PlayerResource { get; set; }
 
 	[Export]
-	public bool CanMove { get; set; }
+	public bool IsPaused { get; set; }
 
-	public delegate void ActivationHandler(GodotObject collider);
+	[Export]
+	public bool CanMove { get; set; } = true;
+
+	public delegate void ActivationHandler(GodotObject collider, TestCharacter character);
 	public event ActivationHandler ActivationEvent;
 
 	private AnimatedSprite2D _playerAnimatedSprite;
@@ -25,13 +28,11 @@ public partial class TestCharacter : CharacterBody2D
 		_playerAnimatedSprite = GetNode<AnimatedSprite2D>("PlayerAnimatedSprite");
 		_playerInteraction = GetNode<RayCast2D>("PlayerInteraction");
 		_heldItemSprite = GetNode<ItemSprite>("HeldItemSprite");
-
-		CanMove = true;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (!CanMove)
+		if (IsPaused)
 		{
 			return;
 		}
@@ -41,8 +42,19 @@ public partial class TestCharacter : CharacterBody2D
 		HandleActivation();
 	}
 
+	public void InvokeActivationEvent(GodotObject collider)
+	{
+		// TODO is there a better way to fake an activation from Computer?
+		ActivationEvent?.Invoke(collider, this);
+	}
+
 	private void HandleMovement()
 	{
+		if (!CanMove)
+		{
+			return;
+		}
+
 		// Get input direction
 		Vector2 inputDirection = Input.GetVector(PlayerResource.Left, PlayerResource.Right, PlayerResource.Up, PlayerResource.Down);
 		if (inputDirection == Vector2.Zero)
@@ -121,7 +133,7 @@ public partial class TestCharacter : CharacterBody2D
 		}
 
 		GodotObject collider = _playerInteraction.GetCollider();
-		ActivationEvent?.Invoke(collider);
+		ActivationEvent?.Invoke(collider, this);
 	}
 
 	private void SetHeldItem(Item item)

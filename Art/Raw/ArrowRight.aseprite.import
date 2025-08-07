@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bbp01ya730r8o"
+path="res://.godot/imported/ArrowRight.aseprite-549823b1f8bc3872cde62c77e18d5ec0.res"
+
+[deps]
+
+source_file="res://Art/Raw/ArrowRight.aseprite"
+dest_files=["res://.godot/imported/ArrowRight.aseprite-549823b1f8bc3872cde62c77e18d5ec0.res"]
+
+[params]
+
